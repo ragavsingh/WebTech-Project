@@ -42,6 +42,24 @@ import AjaxPlaygroundSimulator from './AjaxPlaygroundSimulator';
 import CorbaArchitectureSimulator from './CorbaArchitectureSimulator';
 import BuildWebServiceLab from './BuildWebServiceLab';
 
+// Unit 4 Web 2.0 to Web 3.0 Evolution Simulators
+import WebEvolutionTimeline from './WebEvolutionTimeline';
+import SocialWebSimulator from './SocialWebSimulator';
+import RssReaderSimulator from './RssReaderSimulator';
+import RailsMvcSimulator from './RailsMvcSimulator';
+import OpenApiExplorerSimulator from './OpenApiExplorerSimulator';
+import SemanticWebSimulator from './SemanticWebSimulator';
+import RdfTripleVisualizer from './RdfTripleVisualizer';
+import WidgetsDashboardSimulator from './WidgetsDashboardSimulator';
+import MashupArchitectureSimulator from './MashupArchitectureSimulator';
+import InformationSystemSimulator from './InformationSystemSimulator';
+import SearchEnginePipelineSimulator from './SearchEnginePipelineSimulator';
+import RecommenderSystemSimulator from './RecommenderSystemSimulator';
+import BlockchainBenefitsSimulator from './BlockchainBenefitsSimulator';
+import EdgeComputingSimulator from './EdgeComputingSimulator';
+import DarkModeInspectorSimulator from './DarkModeInspectorSimulator';
+import WebEvolutionLab from './WebEvolutionLab';
+
 const SIMULATION_MAP = {
   // Unit 1 Simulators
   'history-timeline': InternetHistoryTimeline,
@@ -83,6 +101,24 @@ const SIMULATION_MAP = {
   'ajax-programming': AjaxPlaygroundSimulator,
   'corba-architecture': CorbaArchitectureSimulator,
   'build-web-service-lab': BuildWebServiceLab,
+
+  // Unit 4 Web 2.0 to Web 3.0 Evolution Simulators
+  'web-evolution-timeline': WebEvolutionTimeline,
+  'social-web-sim': SocialWebSimulator,
+  'rss-reader-sim': RssReaderSimulator,
+  'rails-mvc-sim': RailsMvcSimulator,
+  'open-api-explorer': OpenApiExplorerSimulator,
+  'semantic-web-sim': SemanticWebSimulator,
+  'rdf-triple-visualizer': RdfTripleVisualizer,
+  'widgets-dashboard': WidgetsDashboardSimulator,
+  'mashup-architecture': MashupArchitectureSimulator,
+  'info-system-sim': InformationSystemSimulator,
+  'search-engine-pipeline': SearchEnginePipelineSimulator,
+  'recommender-system-sim': RecommenderSystemSimulator,
+  'blockchain-benefits-sim': BlockchainBenefitsSimulator,
+  'edge-computing-sim': EdgeComputingSimulator,
+  'dark-mode-inspector': DarkModeInspectorSimulator,
+  'web-evolution-lab': WebEvolutionLab,
 
   // General / Legacy
   'dom-tree': DomTreeSimulator,

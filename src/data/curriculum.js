@@ -1,5 +1,6 @@
 import { UNIT_2_DEFINITION, UNIT_2_TOPICS } from './unit2Curriculum';
 import { UNIT_3_DEFINITION, UNIT_3_TOPICS } from './unit3Curriculum';
+import { UNIT_4_DEFINITION, UNIT_4_TOPICS } from './unit4Curriculum';
 
 export const UNITS = [
   {
@@ -29,22 +30,7 @@ export const UNITS = [
   },
   UNIT_2_DEFINITION,
   UNIT_3_DEFINITION,
-  {
-    id: "unit-4",
-    number: 4,
-    title: "Unit 4: JavaScript, DOM Scripting & Asynchronous Web",
-    description: "Explore the JavaScript event loop, DOM event bubbling, asynchronous patterns, Fetch API, and client-side data handling.",
-    iconName: "Code2",
-    accentColor: "amber",
-    topicCount: 4,
-    estimatedHours: 5,
-    topics: [
-      { id: "event-loop-async", title: "The JavaScript Event Loop & Microtasks", difficulty: "Intermediate", duration: "18 min", isImplemented: false },
-      { id: "dom-manipulation-events", title: "DOM Traversal, Manipulation & Event Bubbling", difficulty: "Beginner", duration: "15 min", isImplemented: false },
-      { id: "fetch-api-ajax", title: "Asynchronous Web: Promises, Fetch API & JSON", difficulty: "Intermediate", duration: "14 min", isImplemented: false },
-      { id: "client-storage-apis", title: "Client-Side Storage: LocalStorage, Session, IndexedDB", difficulty: "Beginner", duration: "10 min", isImplemented: false }
-    ]
-  },
+  UNIT_4_DEFINITION,
   {
     id: "unit-5",
     number: 5,
@@ -1429,7 +1415,10 @@ export const TOPICS = {
   ...UNIT_2_TOPICS,
 
   // Unit 3 Curriculum Topics
-  ...UNIT_3_TOPICS
+  ...UNIT_3_TOPICS,
+
+  // Unit 4 Curriculum Topics
+  ...UNIT_4_TOPICS
 };
 
 // Helper utilities
