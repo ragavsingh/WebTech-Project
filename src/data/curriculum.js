@@ -1,4 +1,5 @@
 import { UNIT_2_DEFINITION, UNIT_2_TOPICS } from './unit2Curriculum';
+import { UNIT_3_DEFINITION, UNIT_3_TOPICS } from './unit3Curriculum';
 
 export const UNITS = [
   {
@@ -27,22 +28,7 @@ export const UNITS = [
     ]
   },
   UNIT_2_DEFINITION,
-  {
-    id: "unit-3",
-    number: 3,
-    title: "Unit 3: CSS3, Modern Layouts & Responsive Design",
-    description: "Deep dive into the CSS box model, Flexbox, CSS Grid, container queries, visual hierarchy, and performant animation styling.",
-    iconName: "Palette",
-    accentColor: "violet",
-    topicCount: 4,
-    estimatedHours: 4.5,
-    topics: [
-      { id: "css-box-model", title: "The CSS Box Model & Geometry Flow", difficulty: "Beginner", duration: "12 min", isImplemented: true },
-      { id: "flexbox-deepdive", title: "Flexbox Layout Mechanics & Axis Alignment", difficulty: "Beginner", duration: "15 min", isImplemented: false },
-      { id: "css-grid-mastery", title: "CSS Grid: Two-Dimensional Alignment", difficulty: "Intermediate", duration: "18 min", isImplemented: false },
-      { id: "responsive-design-queries", title: "Responsive Design: Media & Container Queries", difficulty: "Intermediate", duration: "14 min", isImplemented: false }
-    ]
-  },
+  UNIT_3_DEFINITION,
   {
     id: "unit-4",
     number: 4,
@@ -1442,37 +1428,8 @@ export const TOPICS = {
   // Unit 2 Curriculum Topics
   ...UNIT_2_TOPICS,
 
-  "css-box-model": {
-    id: "css-box-model",
-    unitId: "unit-3",
-    unitNumber: 3,
-    unitTitle: "Unit 3: CSS3, Modern Layouts & Responsive Design",
-    title: "The CSS Box Model & Geometry Flow",
-    subtitle: "How browsers compute the rectangular dimensions, margins, borders, and paddings of every element",
-    difficulty: "Beginner",
-    estimatedMinutes: 12,
-    badge: "CSS Architecture",
-    definition: "The CSS Box Model is the foundational layout paradigm where every element is treated as a rectangular box.",
-    whyItMatters: "Unintended overflow and layout breaks almost always stem from misunderstanding content-box vs border-box.",
-    explanation: [
-      {
-        heading: "The Four Layers of the Box",
-        content: "Content -> Padding -> Border -> Margin."
-      }
-    ],
-    howItWorks: [
-      { step: 1, title: "Content Box Sizing", subtitle: "Sizing", description: "Browser calculates inner dimensions." }
-    ],
-    simulationType: "box-model",
-    practicalExample: {
-      scenario: "Universal Box-Sizing Reset",
-      description: "Setting *, *::before, *::after { box-sizing: border-box; }."
-    },
-    commonMistakes: [],
-    relatedTopics: [],
-    challenge: null,
-    quiz: []
-  }
+  // Unit 3 Curriculum Topics
+  ...UNIT_3_TOPICS
 };
 
 // Helper utilities

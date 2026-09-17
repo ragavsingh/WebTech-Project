@@ -29,6 +29,19 @@ import XmlProcessorPipeline from './XmlProcessorPipeline';
 import DomVsSaxSimulator from './DomVsSaxSimulator';
 import DynamicWebpageLab from './DynamicWebpageLab';
 
+// Unit 3 Web Services & AJAX Simulators
+import WebServiceArchitectureSimulator from './WebServiceArchitectureSimulator';
+import UddiDiscoverySimulator from './UddiDiscoverySimulator';
+import SoapMessageBuilder from './SoapMessageBuilder';
+import WsdlExplorerSimulator from './WsdlExplorerSimulator';
+import WsTriangleArchitectureSimulator from './WsTriangleArchitectureSimulator';
+import WsLifecycleSimulator from './WsLifecycleSimulator';
+import AjaxComparisonSimulator from './AjaxComparisonSimulator';
+import AjaxPerformanceSimulator from './AjaxPerformanceSimulator';
+import AjaxPlaygroundSimulator from './AjaxPlaygroundSimulator';
+import CorbaArchitectureSimulator from './CorbaArchitectureSimulator';
+import BuildWebServiceLab from './BuildWebServiceLab';
+
 const SIMULATION_MAP = {
   // Unit 1 Simulators
   'history-timeline': InternetHistoryTimeline,
@@ -57,6 +70,19 @@ const SIMULATION_MAP = {
   'xml-processor': XmlProcessorPipeline,
   'dom-vs-sax': DomVsSaxSimulator,
   'dynamic-webpage-lab': DynamicWebpageLab,
+
+  // Unit 3 Web Services & Communication Simulators
+  'web-services-flow': WebServiceArchitectureSimulator,
+  'uddi-discovery': UddiDiscoverySimulator,
+  'soap-builder': SoapMessageBuilder,
+  'wsdl-explorer': WsdlExplorerSimulator,
+  'ws-architecture': WsTriangleArchitectureSimulator,
+  'ws-lifecycle': WsLifecycleSimulator,
+  'ajax-comparison': AjaxComparisonSimulator,
+  'ajax-performance': AjaxPerformanceSimulator,
+  'ajax-programming': AjaxPlaygroundSimulator,
+  'corba-architecture': CorbaArchitectureSimulator,
+  'build-web-service-lab': BuildWebServiceLab,
 
   // General / Legacy
   'dom-tree': DomTreeSimulator,
