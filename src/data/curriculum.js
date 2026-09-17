@@ -1,6 +1,7 @@
 import { UNIT_2_DEFINITION, UNIT_2_TOPICS } from './unit2Curriculum';
 import { UNIT_3_DEFINITION, UNIT_3_TOPICS } from './unit3Curriculum';
 import { UNIT_4_DEFINITION, UNIT_4_TOPICS } from './unit4Curriculum';
+import { UNIT_5_DEFINITION, UNIT_5_TOPICS } from './unit5Curriculum';
 
 export const UNITS = [
   {
@@ -31,22 +32,7 @@ export const UNITS = [
   UNIT_2_DEFINITION,
   UNIT_3_DEFINITION,
   UNIT_4_DEFINITION,
-  {
-    id: "unit-5",
-    number: 5,
-    title: "Unit 5: Modern Web Architecture, Security & Emerging Tech",
-    description: "Understand Single Page Apps (SPA), CORS, XSS/CSRF security mitigations, WebSockets, PWAs, and decentralized web concepts.",
-    iconName: "ShieldCheck",
-    accentColor: "emerald",
-    topicCount: 4,
-    estimatedHours: 5.5,
-    topics: [
-      { id: "web-security-cors", title: "Web Security: Same-Origin Policy, CORS & XSS", difficulty: "Advanced", duration: "20 min", isImplemented: false },
-      { id: "rest-graphql-apis", title: "Modern API Paradigms: REST vs GraphQL", difficulty: "Intermediate", duration: "15 min", isImplemented: false },
-      { id: "spa-vs-ssr-hydration", title: "Single Page Apps (SPA) vs SSR & Hydration", difficulty: "Intermediate", duration: "16 min", isImplemented: false },
-      { id: "realtime-websockets", title: "Real-Time Communication: WebSockets & SSE", difficulty: "Advanced", duration: "18 min", isImplemented: false }
-    ]
-  }
+  UNIT_5_DEFINITION
 ];
 
 export const TOPICS = {
@@ -1418,7 +1404,10 @@ export const TOPICS = {
   ...UNIT_3_TOPICS,
 
   // Unit 4 Curriculum Topics
-  ...UNIT_4_TOPICS
+  ...UNIT_4_TOPICS,
+
+  // Unit 5 Curriculum Topics
+  ...UNIT_5_TOPICS
 };
 
 // Helper utilities

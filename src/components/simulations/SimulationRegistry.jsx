@@ -60,6 +60,20 @@ import EdgeComputingSimulator from './EdgeComputingSimulator';
 import DarkModeInspectorSimulator from './DarkModeInspectorSimulator';
 import WebEvolutionLab from './WebEvolutionLab';
 
+// Unit 5 The Future Web Lab Simulators
+import Web40FutureSimulator from './Web40FutureSimulator';
+import AiPersonalizedWebSimulator from './AiPersonalizedWebSimulator';
+import DwebNetworkSimulator from './DwebNetworkSimulator';
+import BlockchainIntegrationSimulator from './BlockchainIntegrationSimulator';
+import IotDashboardSimulator from './IotDashboardSimulator';
+import WebArSimulator from './WebArSimulator';
+import WebVrSimulator from './WebVrSimulator';
+import SmartWebSimulator from './SmartWebSimulator';
+import AdaptiveInterfaceSimulator from './AdaptiveInterfaceSimulator';
+import WebAutomationSimulator from './WebAutomationSimulator';
+import FiveGImpactSimulator from './FiveGImpactSimulator';
+import BuildFutureWebLab from './BuildFutureWebLab';
+
 const SIMULATION_MAP = {
   // Unit 1 Simulators
   'history-timeline': InternetHistoryTimeline,
@@ -94,6 +108,7 @@ const SIMULATION_MAP = {
   'uddi-discovery': UddiDiscoverySimulator,
   'soap-builder': SoapMessageBuilder,
   'wsdl-explorer': WsdlExplorerSimulator,
+  'ws-triangle': WsTriangleArchitectureSimulator,
   'ws-architecture': WsTriangleArchitectureSimulator,
   'ws-lifecycle': WsLifecycleSimulator,
   'ajax-comparison': AjaxComparisonSimulator,
@@ -119,6 +134,20 @@ const SIMULATION_MAP = {
   'edge-computing-sim': EdgeComputingSimulator,
   'dark-mode-inspector': DarkModeInspectorSimulator,
   'web-evolution-lab': WebEvolutionLab,
+
+  // Unit 5 The Future Web Lab Simulators
+  'web40-future-sim': Web40FutureSimulator,
+  'ai-personalized-web-sim': AiPersonalizedWebSimulator,
+  'dweb-network-sim': DwebNetworkSimulator,
+  'blockchain-integration-sim': BlockchainIntegrationSimulator,
+  'iot-dashboard-sim': IotDashboardSimulator,
+  'web-ar-sim': WebArSimulator,
+  'web-vr-sim': WebVrSimulator,
+  'smart-web-sim': SmartWebSimulator,
+  'adaptive-interface-sim': AdaptiveInterfaceSimulator,
+  'web-automation-sim': WebAutomationSimulator,
+  'five-g-impact-sim': FiveGImpactSimulator,
+  'build-future-web-lab': BuildFutureWebLab,
 
   // General / Legacy
   'dom-tree': DomTreeSimulator,
