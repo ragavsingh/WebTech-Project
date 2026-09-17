@@ -12,7 +12,8 @@ import {
   Search, 
   ChevronRight,
   Sparkles,
-  CheckCircle2
+  CheckCircle2,
+  Milestone
 } from 'lucide-react';
 import { useProgress } from '../../context/ProgressContext';
 import { TOPICS, UNITS } from '../../data/curriculum';
@@ -28,6 +29,7 @@ export default function Navbar() {
   const navItems = [
     { name: 'Home', path: '/', icon: Compass },
     { name: 'Learn', path: '/learn', icon: BookOpen },
+    { name: 'Journey', path: '/journey', icon: Milestone, badge: '15 Steps' },
     { name: 'Playground', path: '/playground', icon: FlaskConical },
     { name: 'Challenges', path: '/challenges', icon: Award },
     { name: 'Quiz', path: '/quiz', icon: HelpCircle },
@@ -85,6 +87,13 @@ export default function Navbar() {
                   >
                     <Icon className={`w-4 h-4 ${active ? 'text-indigo-600' : 'text-slate-400'}`} />
                     <span>{item.name}</span>
+                    {item.badge && (
+                      <span className={`hidden xl:inline-block text-[9px] font-mono font-bold px-1.5 py-0.2 rounded-full ${
+                        active ? 'bg-indigo-200/80 text-indigo-800' : 'bg-indigo-50 text-indigo-700 border border-indigo-100'
+                      }`}>
+                        {item.badge}
+                      </span>
+                    )}
                   </Link>
                 );
               })}

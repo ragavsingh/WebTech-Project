@@ -27,11 +27,11 @@ export default function Footer() {
           <div className="space-y-3">
             <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-900">Curriculum Units</h4>
             <ul className="space-y-2 text-xs text-slate-500">
-              <li><Link to="/topic/dns-resolution" className="hover:text-indigo-600 transition-colors">Unit 1: Web Fundamentals</Link></li>
-              <li><Link to="/topic/dom-tree-hierarchy" className="hover:text-indigo-600 transition-colors">Unit 2: HTML5 & DOM</Link></li>
-              <li><Link to="/topic/css-box-model" className="hover:text-indigo-600 transition-colors">Unit 3: CSS3 & Box Model</Link></li>
-              <li><Link to="/learn" className="hover:text-indigo-600 transition-colors">Unit 4: JavaScript & Async</Link></li>
-              <li><Link to="/learn" className="hover:text-indigo-600 transition-colors">Unit 5: Web Security & SPA</Link></li>
+              <li><Link to="/topic/history-of-the-internet" className="hover:text-indigo-600 transition-colors">Unit 1: Fundamentals & Protocols</Link></li>
+              <li><Link to="/topic/html-lists-tables-images" className="hover:text-indigo-600 transition-colors">Unit 2: HTML, DHTML & XML</Link></li>
+              <li><Link to="/topic/intro-web-services" className="hover:text-indigo-600 transition-colors">Unit 3: Web Services & AJAX</Link></li>
+              <li><Link to="/topic/web20-evolution" className="hover:text-indigo-600 transition-colors">Unit 4: Web 2.0 to Web 3.0</Link></li>
+              <li><Link to="/topic/web40-future-web" className="hover:text-indigo-600 transition-colors">Unit 5: The Future Web Lab</Link></li>
             </ul>
           </div>
 
@@ -39,6 +39,7 @@ export default function Footer() {
           <div className="space-y-3">
             <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-900">Interactive Hubs</h4>
             <ul className="space-y-2 text-xs text-slate-500">
+              <li><Link to="/journey" className="hover:text-indigo-600 transition-colors font-semibold text-indigo-700">Web Technology Journey &rarr;</Link></li>
               <li><Link to="/playground" className="hover:text-indigo-600 transition-colors">Simulation Playground</Link></li>
               <li><Link to="/challenges" className="hover:text-indigo-600 transition-colors">Hands-on Challenges</Link></li>
               <li><Link to="/quiz" className="hover:text-indigo-600 transition-colors">Topic Quiz Hub</Link></li>

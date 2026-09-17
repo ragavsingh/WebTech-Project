@@ -10,6 +10,7 @@ import PlaygroundPage from './pages/PlaygroundPage';
 import ChallengesPage from './pages/ChallengesPage';
 import QuizHubPage from './pages/QuizHubPage';
 import ProgressPage from './pages/ProgressPage';
+import WebTechnologyJourneyPage from './pages/WebTechnologyJourneyPage';
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/learn" element={<LearnPage />} />
+              <Route path="/journey" element={<WebTechnologyJourneyPage />} />
               <Route path="/topic/:topicId" element={<TopicDetailPage />} />
               <Route path="/playground" element={<PlaygroundPage />} />
               <Route path="/challenges" element={<ChallengesPage />} />

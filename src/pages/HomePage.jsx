@@ -14,7 +14,8 @@ import {
   ShieldCheck, 
   Eye,
   Terminal,
-  Activity
+  Activity,
+  Milestone
 } from 'lucide-react';
 import { UNITS } from '../data/curriculum';
 import { useProgress } from '../context/ProgressContext';
@@ -41,28 +42,44 @@ export default function HomePage() {
       badge: 'Live Packet Sim'
     },
     {
-      id: 'http-lifecycle',
-      title: 'HTTP Wire Inspector',
-      unit: 'Unit 1: Fundamentals',
-      desc: 'Formulate GET/POST requests, configure custom headers, and inspect live response codes and payloads.',
-      icon: Activity,
-      badge: 'Wire Protocol'
-    },
-    {
-      id: 'dom-tree-hierarchy',
+      id: 'object-models-dom',
       title: 'DOM Tree Sandbox',
-      unit: 'Unit 2: HTML5 & DOM',
+      unit: 'Unit 2: HTML & DOM',
       desc: 'Append, remove, and mutate elements to observe synchronous DOM tree construction and paint events.',
       icon: Layers,
       badge: 'Tree Mutation'
     },
     {
-      id: 'css-box-model',
-      title: 'CSS Box Model Geometry',
-      unit: 'Unit 3: CSS3 & Layouts',
-      desc: 'Adjust margins, borders, paddings, and compare content-box vs border-box sizing in real-time.',
+      id: 'ajax-foundations',
+      title: 'AJAX Asynchronous Lab',
+      unit: 'Unit 3: Web Services',
+      desc: 'Formulate non-blocking XMLHttpRequest and Fetch pipelines, comparing synchronous freezes with asynchronous flow.',
+      icon: Zap,
+      badge: 'Async XHR'
+    },
+    {
+      id: 'web20-evolution',
+      title: 'Web 2.0 to 3.0 Timeline',
+      unit: 'Unit 4: Evolution',
+      desc: 'Explore the architectural paradigm shift from static brochureware to read-write social and semantic web graphs.',
       icon: Sparkles,
-      badge: 'Layout Engine'
+      badge: 'Evolution Map'
+    },
+    {
+      id: 'blockchain-integration-web',
+      title: 'Blockchain Ledger Explorer',
+      unit: 'Unit 5: Future Web',
+      desc: 'Inspect cryptographic blocks, simulate data tampering, and observe hash cascade invalidation in real time.',
+      icon: ShieldCheck,
+      badge: 'Cryptographic Ledger'
+    },
+    {
+      id: 'web40-future-web',
+      title: 'Web 4.0 Symbiotic Lab',
+      unit: 'Unit 5: Future Web',
+      desc: 'Contrast legacy reactive request-response with proactive, autonomous context-aware agent collaboration.',
+      icon: Activity,
+      badge: 'Symbiotic Web'
     }
   ];
 
@@ -95,6 +112,15 @@ export default function HomePage() {
 
           {/* Call to Actions */}
           <div className="flex flex-wrap items-center justify-center gap-3.5 pt-2">
+            <Link
+              to="/journey"
+              className="px-6 py-3 rounded-xl bg-gradient-to-r from-violet-600 via-indigo-600 to-blue-600 hover:from-violet-700 hover:to-blue-700 text-white text-sm font-semibold shadow-card hover:shadow-card-hover transition-all flex items-center space-x-2 group"
+            >
+              <Milestone className="w-4 h-4 text-white" />
+              <span>Web Technology Journey</span>
+              <span className="text-[10px] font-mono bg-white/20 px-1.5 py-0.5 rounded-full font-bold">15 Steps</span>
+            </Link>
+
             <Link
               to="/topic/dns-resolution"
               className="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold shadow-card hover:shadow-card-hover transition-all flex items-center space-x-2 group"
@@ -171,6 +197,44 @@ export default function HomePage() {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      {/* Web Technology Journey Feature Banner */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 rounded-3xl p-8 sm:p-10 text-white shadow-xl relative overflow-hidden border border-indigo-500/20">
+          <div className="absolute right-0 top-0 w-80 h-80 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+            <div className="space-y-3 max-w-2xl">
+              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-300 text-xs font-semibold">
+                <Milestone className="w-3.5 h-3.5" />
+                <span>Global 15-Milestone Evolutionary Roadmap</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+                Trace the Full Web Technology Journey
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Connect the historical and architectural dots: see how <strong>Internet</strong> gave birth to <strong>WWW</strong>, then <strong>HTML/CSS/JS</strong>, <strong>HTTP</strong>, <strong>DNS</strong>, <strong>DOM</strong>, <strong>AJAX</strong>, <strong>Web Services</strong>, <strong>APIs</strong>, <strong>Web 2.0</strong>, <strong>Semantic Web</strong>, <strong>AI</strong>, <strong>IoT</strong>, <strong>Blockchain</strong>, and into <strong>The Future Web</strong>.
+              </p>
+              <div className="flex flex-wrap items-center gap-2 pt-2 text-[11px] font-mono text-indigo-300">
+                <span className="bg-white/10 px-2 py-0.5 rounded border border-white/15">15 Connected Nodes</span>
+                <span>&bull;</span>
+                <span className="bg-white/10 px-2 py-0.5 rounded border border-white/15">Evolutionary Continuity</span>
+                <span>&bull;</span>
+                <span className="bg-white/10 px-2 py-0.5 rounded border border-white/15">Interactive Labs</span>
+              </div>
+            </div>
+
+            <div className="shrink-0 flex flex-col sm:flex-row gap-3">
+              <Link
+                to="/journey"
+                className="px-6 py-3.5 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white text-xs font-bold shadow-lg transition-all flex items-center justify-center space-x-2 group"
+              >
+                <span>Launch Interactive Journey</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 

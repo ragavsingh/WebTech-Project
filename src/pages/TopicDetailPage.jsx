@@ -13,7 +13,8 @@ import RelatedConcepts from '../components/topic/RelatedConcepts';
 import MiniChallenge from '../components/topic/MiniChallenge';
 import TopicQuiz from '../components/topic/TopicQuiz';
 import PreviousNextNavigation from '../components/topic/PreviousNextNavigation';
-import { AlertCircle, ArrowLeft, BookOpen, Layers } from 'lucide-react';
+import { AlertCircle, ArrowLeft, BookOpen, Layers, Milestone, ArrowRight } from 'lucide-react';
+import { JOURNEY_MILESTONES } from '../components/journey/WebJourneyVisualizer';
 
 export default function TopicDetailPage() {
   const { topicId } = useParams();
@@ -58,6 +59,9 @@ export default function TopicDetailPage() {
   const prevTopic = currentIndex > 0 ? allTopics[currentIndex - 1] : null;
   const nextTopic = currentIndex < allTopics.length - 1 ? allTopics[currentIndex + 1] : null;
 
+  // Check if this topic is one of the 15 global journey milestones
+  const journeyMilestone = JOURNEY_MILESTONES.find(m => m.topicId === topic.id);
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
       <div className="flex flex-col lg:flex-row gap-8 items-start">
@@ -77,6 +81,32 @@ export default function TopicDetailPage() {
 
           {/* 1. Header with Metadata & Actions */}
           <TopicHeader topic={topic} />
+
+          {/* Journey Milestone Banner if this topic is in the 15-step sequence */}
+          {journeyMilestone && (
+            <div className="bg-gradient-to-r from-indigo-50 via-white to-blue-50/50 rounded-2xl p-4 border border-indigo-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-card">
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 rounded-xl bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-2xs font-mono font-bold text-xs">
+                  #{journeyMilestone.number}
+                </div>
+                <div>
+                  <span className="text-[10px] font-mono uppercase font-bold text-indigo-700 block">
+                    Web Technology Journey Milestone ({journeyMilestone.era})
+                  </span>
+                  <span className="text-xs text-slate-700 font-medium">
+                    Step #{journeyMilestone.number} of 15 &bull; {journeyMilestone.subtitle}
+                  </span>
+                </div>
+              </div>
+              <Link
+                to="/journey"
+                className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 flex items-center gap-1 shrink-0 self-start sm:self-auto"
+              >
+                <span>View Full Journey Map</span>
+                <ArrowRight className="w-3 h-3" />
+              </Link>
+            </div>
+          )}
 
           {/* 2. Structured Explanation & Why It Matters */}
           <TopicExplanation topic={topic} />
