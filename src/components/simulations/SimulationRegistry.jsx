@@ -17,6 +17,18 @@ import WebServerSimulator from './WebServerSimulator';
 import FollowWebQueryCapstone from './FollowWebQueryCapstone';
 import BreakTheWebChallenge from './BreakTheWebChallenge';
 
+// Unit 2 Interactive Simulators
+import HtmlListsTablesImages from './HtmlListsTablesImages';
+import FormBuilderSandbox from './FormBuilderSandbox';
+import DhtmlEventsSimulator from './DhtmlEventsSimulator';
+import DomExplorerSimulator from './DomExplorerSimulator';
+import XmlTreeEditor from './XmlTreeEditor';
+import XmlSchemaValidator from './XmlSchemaValidator';
+import XslTransformationSimulator from './XslTransformationSimulator';
+import XmlProcessorPipeline from './XmlProcessorPipeline';
+import DomVsSaxSimulator from './DomVsSaxSimulator';
+import DynamicWebpageLab from './DynamicWebpageLab';
+
 const SIMULATION_MAP = {
   // Unit 1 Simulators
   'history-timeline': InternetHistoryTimeline,
@@ -34,7 +46,19 @@ const SIMULATION_MAP = {
   'follow-a-web-request': FollowWebQueryCapstone,
   'break-the-web': BreakTheWebChallenge,
 
-  // Units 2 & 3 Showcases
+  // Unit 2 Interactive Laboratory Simulators
+  'html-elements': HtmlListsTablesImages,
+  'form-builder': FormBuilderSandbox,
+  'dhtml-events': DhtmlEventsSimulator,
+  'dom-explorer': DomExplorerSimulator,
+  'xml-tree': XmlTreeEditor,
+  'xml-schema': XmlSchemaValidator,
+  'xsl-transform': XslTransformationSimulator,
+  'xml-processor': XmlProcessorPipeline,
+  'dom-vs-sax': DomVsSaxSimulator,
+  'dynamic-webpage-lab': DynamicWebpageLab,
+
+  // General / Legacy
   'dom-tree': DomTreeSimulator,
   'box-model': BoxModelSimulator
 };

@@ -1,7 +1,4 @@
-/**
- * Central Data-Driven Curriculum for WebTech Playground
- * Fully populated with comprehensive documentation and interactive simulations for UNIT 1.
- */
+import { UNIT_2_DEFINITION, UNIT_2_TOPICS } from './unit2Curriculum';
 
 export const UNITS = [
   {
@@ -29,22 +26,7 @@ export const UNITS = [
       { id: "follow-a-web-request", title: "Capstone: Follow a Web Request (End-to-End)", difficulty: "Intermediate", duration: "25 min", isImplemented: true }
     ]
   },
-  {
-    id: "unit-2",
-    number: 2,
-    title: "Unit 2: HTML5, Semantic Structure & DOM",
-    description: "Master document semantics, accessible elements, modern web forms, and how browsers parse markup into the Document Object Model (DOM).",
-    iconName: "FileCode",
-    accentColor: "blue",
-    topicCount: 4,
-    estimatedHours: 4,
-    topics: [
-      { id: "dom-tree-hierarchy", title: "The DOM Tree & Node Hierarchy", difficulty: "Beginner", duration: "14 min", isImplemented: true },
-      { id: "html5-semantic-elements", title: "HTML5 Semantic Elements & Document Outlining", difficulty: "Beginner", duration: "12 min", isImplemented: false },
-      { id: "web-accessibility-a11y", title: "Web Accessibility (A11y) & ARIA Basics", difficulty: "Intermediate", duration: "15 min", isImplemented: false },
-      { id: "modern-html5-forms", title: "Modern HTML5 Form Controls & Validation", difficulty: "Beginner", duration: "10 min", isImplemented: false }
-    ]
-  },
+  UNIT_2_DEFINITION,
   {
     id: "unit-3",
     number: 3,
@@ -1457,38 +1439,8 @@ export const TOPICS = {
     ]
   },
 
-  // Units 2 & 3 Showcases
-  "dom-tree-hierarchy": {
-    id: "dom-tree-hierarchy",
-    unitId: "unit-2",
-    unitNumber: 2,
-    unitTitle: "Unit 2: HTML5, Semantic Structure & DOM",
-    title: "The DOM Tree & Node Hierarchy",
-    subtitle: "How the browser constructs an object-oriented tree representation of parsed HTML markup",
-    difficulty: "Beginner",
-    estimatedMinutes: 14,
-    badge: "Document Object Model",
-    definition: "The Document Object Model (DOM) is a cross-platform and language-independent programming interface for HTML and XML documents.",
-    whyItMatters: "Every frontend framework operates directly or conceptually upon the browser DOM.",
-    explanation: [
-      {
-        heading: "From Raw Bytes to DOM Nodes",
-        content: "Browsers convert network bytes into the DOM in 4 phases: Bytes -> Characters -> Tokens -> Nodes -> Object Tree."
-      }
-    ],
-    howItWorks: [
-      { step: 1, title: "HTML Tokenization", subtitle: "Parsing tags", description: "The parser converts characters into StartTag, EndTag, and Character tokens." }
-    ],
-    simulationType: "dom-tree",
-    practicalExample: {
-      scenario: "Dynamic List Rendering",
-      description: "Using document.createElement and appendChild."
-    },
-    commonMistakes: [],
-    relatedTopics: [],
-    challenge: null,
-    quiz: []
-  },
+  // Unit 2 Curriculum Topics
+  ...UNIT_2_TOPICS,
 
   "css-box-model": {
     id: "css-box-model",
