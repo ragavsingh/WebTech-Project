@@ -58,11 +58,11 @@ export default function HowItWorksStepper({ steps }) {
 
         {/* Active Step Details Card */}
         <div className="bg-slate-50/70 rounded-xl p-5 border border-slate-200/80 space-y-2.5 transition-all">
-          <div className="flex items-center space-x-2">
+          <div className="flex flex-wrap items-center gap-2">
             <span className="px-2 py-0.5 rounded bg-indigo-100 text-indigo-800 text-[11px] font-mono font-bold">
               Phase {current.step || activeStep + 1}
             </span>
-            <h4 className="text-base font-bold text-slate-900">
+            <h4 className="text-base font-bold text-slate-900 break-words">
               {current.title}
             </h4>
           </div>

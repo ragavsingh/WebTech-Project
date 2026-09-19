@@ -65,13 +65,13 @@ export default function Navbar() {
                     <span className="font-bold text-lg text-slate-900 tracking-tight leading-none">WebTech</span>
                     <span className="font-semibold text-xs px-1.5 py-0.5 rounded bg-indigo-50 text-indigo-700 border border-indigo-100/80 font-mono">Playground</span>
                   </div>
-                  <span className="text-[10px] text-slate-400 font-medium tracking-wide">Interactive Learning Lab</span>
+                  <span className="text-[10px] text-slate-400 font-medium tracking-wide hidden sm:block">Interactive Learning Lab</span>
                 </div>
               </Link>
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-1">
+            <nav className="hidden lg:flex items-center space-x-0.5 xl:space-x-1">
               {navItems.map((item) => {
                 const active = isActive(item.path);
                 const Icon = item.icon;
@@ -79,7 +79,7 @@ export default function Navbar() {
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`flex items-center space-x-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 ${
+                    className={`flex items-center space-x-1.5 px-2.5 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-medium transition-all duration-150 ${
                       active
                         ? 'bg-indigo-50/80 text-indigo-700 shadow-xs'
                         : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70'
@@ -93,16 +93,16 @@ export default function Navbar() {
             </nav>
 
             {/* Search & Actions */}
-            <div className="hidden sm:flex items-center space-x-3">
+            <div className="hidden lg:flex items-center space-x-2 xl:space-x-3">
               {/* Search Button */}
               <button
                 onClick={() => setSearchOpen(true)}
-                className="flex items-center space-x-2 px-3 py-1.5 rounded-lg border border-slate-200/90 bg-slate-50 hover:bg-slate-100/80 text-slate-500 text-xs transition-colors"
+                className="flex items-center space-x-2 px-2.5 xl:px-3 py-1.5 rounded-lg border border-slate-200/90 bg-slate-50 hover:bg-slate-100/80 text-slate-500 text-xs transition-colors"
                 title="Search topics (Ctrl+K)"
               >
                 <Search className="w-3.5 h-3.5 text-slate-400" />
                 <span>Search topics...</span>
-                <kbd className="hidden lg:inline-block px-1.5 py-0.5 text-[10px] font-mono text-slate-400 bg-white rounded border border-slate-200">
+                <kbd className="hidden xl:inline-block px-1.5 py-0.5 text-[10px] font-mono text-slate-400 bg-white rounded border border-slate-200">
                   Ctrl K
                 </kbd>
               </button>
@@ -110,20 +110,20 @@ export default function Navbar() {
               {/* Progress Summary Pill */}
               <Link 
                 to="/progress"
-                className="flex items-center space-x-2 px-3 py-1.5 rounded-full bg-slate-50 hover:bg-slate-100/90 border border-slate-200/90 text-xs font-medium text-slate-700 transition-colors"
+                className="flex items-center space-x-1.5 xl:space-x-2 px-2.5 xl:px-3 py-1.5 rounded-full bg-slate-50 hover:bg-slate-100/90 border border-slate-200/90 text-xs font-medium text-slate-700 transition-colors"
               >
                 <div className="w-2 h-2 rounded-full bg-indigo-600 animate-pulse" />
-                <span>{overallPercentage}% Completed</span>
-                <span className="text-[11px] text-slate-400">({completedTopicsCount}/{totalAvailableTopics})</span>
+                <span>{overallPercentage}%</span>
+                <span className="hidden xl:inline text-[11px] text-slate-400">({completedTopicsCount}/{totalAvailableTopics})</span>
               </Link>
             </div>
 
-            {/* Mobile Hamburger Button */}
-            <div className="flex md:hidden items-center space-x-2">
+            {/* Mobile / Tablet Controls (< lg) */}
+            <div className="flex lg:hidden items-center space-x-1.5 sm:space-x-2">
               <button
                 onClick={() => setSearchOpen(true)}
                 className="p-2 rounded-lg text-slate-600 hover:bg-slate-100"
-                aria-label="Search"
+                aria-label="Search topics"
               >
                 <Search className="w-5 h-5" />
               </button>
@@ -140,7 +140,7 @@ export default function Navbar() {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-slate-200/80 bg-white/95 px-4 pt-3 pb-5 space-y-2 shadow-lg animate-in slide-in-from-top-2">
+          <div className="lg:hidden border-t border-slate-200/80 bg-white/95 px-4 pt-3 pb-5 space-y-2 shadow-lg animate-in slide-in-from-top-2">
             <div className="flex items-center justify-between py-2 px-3 mb-2 rounded-lg bg-indigo-50/70 border border-indigo-100 text-xs text-indigo-800">
               <div className="flex items-center space-x-2">
                 <Sparkles className="w-4 h-4 text-indigo-600" />

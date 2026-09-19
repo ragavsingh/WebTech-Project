@@ -567,7 +567,7 @@ export default function PlaygroundPage() {
       </div>
 
       {/* Fast Simulator Switcher Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5 max-h-48 overflow-y-auto p-1 bg-slate-100/50 rounded-2xl border border-slate-200/70">
+      <div className="grid grid-cols-1 min-[380px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 max-h-48 overflow-y-auto p-1 bg-slate-100/50 rounded-2xl border border-slate-200/70">
         {filteredSimulators.map(sim => {
           const isSelected = selectedSimId === sim.id;
           const Icon = sim.icon;
@@ -590,13 +590,13 @@ export default function PlaygroundPage() {
 
       {/* Active Simulator Header Banner */}
       <div className="bg-gradient-to-r from-indigo-50 via-white to-blue-50/50 rounded-2xl p-5 border border-indigo-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-card">
-        <div className="flex items-center space-x-3.5">
-          <div className="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-xs shrink-0">
+        <div className="flex items-start sm:items-center space-x-3.5 min-w-0 flex-1">
+          <div className="w-10 h-10 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-xs shrink-0 mt-0.5 sm:mt-0">
             <currentSim.icon className="w-5 h-5" />
           </div>
-          <div>
+          <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-mono font-bold text-indigo-700 uppercase bg-indigo-100/80 px-2 py-0.5 rounded">
+              <span className="text-[10px] font-mono font-bold text-indigo-700 uppercase bg-indigo-100/80 px-2 py-0.5 rounded truncate">
                 {currentSim.unit}
               </span>
             </div>

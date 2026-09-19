@@ -125,10 +125,10 @@ export default function TopicQuiz({ topicId, questions }) {
                     disabled={isAnswered}
                     className={`w-full text-left p-3.5 rounded-xl border text-xs sm:text-sm font-medium transition-all ${style}`}
                   >
-                    <div className="flex items-center justify-between">
-                      <span>{opt}</span>
+                    <div className="flex items-start justify-between gap-3">
+                      <span className="flex-1 leading-relaxed break-words">{opt}</span>
                       {isAnswered && (
-                        <span>
+                        <span className="shrink-0 mt-0.5">
                           {isCorrect ? (
                             <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                           ) : isSelected ? (

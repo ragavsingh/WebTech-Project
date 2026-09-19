@@ -75,13 +75,13 @@ export default function QuizHubPage() {
       {/* Active Quiz Area */}
       {currentQuiz && (
         <div className="space-y-3">
-          <div className="flex items-center justify-between px-1">
-            <span className="text-xs font-mono text-indigo-700 font-semibold">
+          <div className="flex flex-wrap items-center justify-between gap-2 px-1">
+            <span className="text-xs font-mono text-indigo-700 font-semibold truncate max-w-full sm:max-w-md">
               Currently Testing: {currentQuiz.topicTitle}
             </span>
             <Link
               to={`/topic/${currentQuiz.topicId}`}
-              className="text-xs text-indigo-600 hover:text-indigo-800 font-medium flex items-center gap-1"
+              className="text-xs text-indigo-600 hover:text-indigo-800 font-medium flex items-center gap-1 shrink-0"
             >
               <span>Review Topic Notes</span>
               <ArrowRight className="w-3 h-3" />

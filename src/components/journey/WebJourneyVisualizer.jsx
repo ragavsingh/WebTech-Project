@@ -403,12 +403,12 @@ export default function WebJourneyVisualizer() {
         {selectedMilestone && (
           <div className="bg-gradient-to-br from-slate-50 to-indigo-50/30 rounded-2xl border border-indigo-100 p-6 sm:p-8 space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-200/80 pb-6">
-              <div className="flex items-center space-x-4">
-                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-tr ${selectedMilestone.color} text-white flex items-center justify-center shadow-md shrink-0`}>
-                  <selectedMilestone.icon className="w-7 h-7" />
+              <div className="flex items-start sm:items-center space-x-3.5 sm:space-x-4 min-w-0 flex-1">
+                <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr ${selectedMilestone.color} text-white flex items-center justify-center shadow-md shrink-0 mt-0.5 sm:mt-0`}>
+                  <selectedMilestone.icon className="w-6 h-6 sm:w-7 sm:h-7" />
                 </div>
-                <div>
-                  <div className="flex items-center gap-2">
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-center gap-2">
                     <span className="text-xs font-mono font-bold uppercase tracking-wider text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-200">
                       Step #{selectedMilestone.number} &bull; {selectedMilestone.era}
                     </span>
@@ -416,8 +416,8 @@ export default function WebJourneyVisualizer() {
                       {selectedMilestone.unitId.toUpperCase()}
                     </span>
                   </div>
-                  <h3 className="text-2xl font-black text-slate-900 mt-1">
-                    {selectedMilestone.title} &mdash; <span className="text-indigo-600 font-bold text-lg">{selectedMilestone.subtitle}</span>
+                  <h3 className="text-lg sm:text-2xl font-black text-slate-900 mt-1 break-words">
+                    {selectedMilestone.title} &mdash; <span className="text-indigo-600 font-bold text-base sm:text-lg">{selectedMilestone.subtitle}</span>
                   </h3>
                 </div>
               </div>
@@ -425,7 +425,7 @@ export default function WebJourneyVisualizer() {
               {/* Action Button */}
               <Link
                 to={`/topic/${selectedMilestone.topicId}`}
-                className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold shadow-card hover:shadow-card-hover transition-all flex items-center justify-center space-x-2 shrink-0 group"
+                className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold shadow-card hover:shadow-card-hover transition-all flex items-center justify-center space-x-2 shrink-0 self-start sm:self-auto group"
               >
                 <span>Launch Topic Lab</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

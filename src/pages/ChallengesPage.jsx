@@ -89,13 +89,13 @@ export default function ChallengesPage() {
       <div className="space-y-6">
         {filteredChallenges.map((challenge) => (
           <div key={challenge.id} className="space-y-2">
-            <div className="flex items-center justify-between px-1">
-              <span className="text-xs font-mono text-indigo-700 font-semibold">
+            <div className="flex flex-wrap items-center justify-between gap-2 px-1">
+              <span className="text-xs font-mono text-indigo-700 font-semibold truncate max-w-full sm:max-w-md">
                 {challenge.unitTitle} &bull; {challenge.topicTitle}
               </span>
               <Link
                 to={`/topic/${challenge.topicId}`}
-                className="text-xs text-indigo-600 hover:text-indigo-800 font-medium flex items-center gap-1"
+                className="text-xs text-indigo-600 hover:text-indigo-800 font-medium flex items-center gap-1 shrink-0"
               >
                 <span>Read Topic Documentation</span>
                 <ArrowRight className="w-3 h-3" />

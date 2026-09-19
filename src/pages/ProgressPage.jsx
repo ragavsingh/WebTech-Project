@@ -104,7 +104,7 @@ export default function ProgressPage() {
             <span>Overall Completion</span>
             <BookOpen className="w-4 h-4 text-indigo-600" />
           </div>
-          <div className="flex items-baseline space-x-2">
+          <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
             <span className="text-3xl font-black text-slate-900 font-mono">{overallPercentage}%</span>
             <span className="text-xs text-slate-400">({completedTopicsCount}/{totalAvailableTopics} topics)</span>
           </div>
@@ -122,7 +122,7 @@ export default function ProgressPage() {
             <span>Challenges Solved</span>
             <Award className="w-4 h-4 text-emerald-600" />
           </div>
-          <div className="flex items-baseline space-x-2">
+          <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
             <span className="text-3xl font-black text-slate-900 font-mono">{completedChallengesCount}</span>
             <span className="text-xs text-slate-400">of {totalChallenges} total</span>
           </div>
@@ -140,7 +140,7 @@ export default function ProgressPage() {
             <span>Quiz Accuracy</span>
             <HelpCircle className="w-4 h-4 text-blue-600" />
           </div>
-          <div className="flex items-baseline space-x-2">
+          <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
             <span className="text-3xl font-black text-slate-900 font-mono">{averageQuizAccuracy}%</span>
             <span className="text-xs text-slate-400">({quizzesCompletedCount} quizzes)</span>
           </div>
@@ -158,7 +158,7 @@ export default function ProgressPage() {
             <span>Study Streak</span>
             <Flame className="w-4 h-4 text-orange-500" />
           </div>
-          <div className="flex items-baseline space-x-2">
+          <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
             <span className="text-3xl font-black text-slate-900 font-mono">{progress.streak || 3}</span>
             <span className="text-xs text-slate-400">days active</span>
           </div>

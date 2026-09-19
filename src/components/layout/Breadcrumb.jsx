@@ -19,13 +19,13 @@ export default function Breadcrumb({ items }) {
           <React.Fragment key={index}>
             <ChevronRight className="w-3.5 h-3.5 text-slate-300 shrink-0" />
             {isLast ? (
-              <span className="font-medium text-slate-800 truncate max-w-[240px] sm:max-w-none">
+              <span className="font-medium text-slate-800 truncate max-w-[140px] sm:max-w-[240px] md:max-w-none">
                 {item.label}
               </span>
             ) : (
               <Link 
                 to={item.path} 
-                className="hover:text-indigo-600 transition-colors truncate max-w-[180px] sm:max-w-none"
+                className="hover:text-indigo-600 transition-colors truncate max-w-[100px] sm:max-w-[180px] md:max-w-none"
               >
                 {item.label}
               </Link>

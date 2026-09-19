@@ -43,10 +43,10 @@ export default function CodePlayground({ data }) {
             </span>
           </div>
 
-          <div className="flex items-center space-x-2">
+          <div className="flex flex-wrap items-center gap-2">
             {/* Interactive Options Tabs */}
             {data.interactiveOptions && data.interactiveOptions.length > 0 && (
-              <div className="flex items-center space-x-1 bg-slate-900 p-0.5 rounded-lg border border-slate-800 text-[11px] font-mono">
+              <div className="flex flex-wrap items-center gap-1 bg-slate-900 p-0.5 rounded-lg border border-slate-800 text-[11px] font-mono">
                 {data.interactiveOptions.map((opt, idx) => (
                   <button
                     key={idx}
@@ -78,7 +78,7 @@ export default function CodePlayground({ data }) {
           {/* Input Prompt */}
           <div className="flex items-start space-x-2 text-slate-200 bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
             <span className="text-emerald-400 select-none font-bold">$</span>
-            <pre className="whitespace-pre-wrap text-emerald-300 font-medium overflow-x-auto">
+            <pre className="whitespace-pre-wrap text-emerald-300 font-medium overflow-x-auto break-all sm:break-normal">
               {currentCode}
             </pre>
           </div>

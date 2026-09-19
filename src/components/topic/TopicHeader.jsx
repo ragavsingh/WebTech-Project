@@ -34,8 +34,11 @@ export default function TopicHeader({ topic }) {
     <div className="space-y-4 pb-6 border-b border-slate-200/80">
       {/* Unit Tag & Controls Bar */}
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <div className="flex items-center space-x-2">
-          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100">
+        <div className="flex flex-wrap items-center gap-2">
+          <span 
+            className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100 max-w-[200px] sm:max-w-none truncate"
+            title={topic.unitTitle}
+          >
             {topic.unitTitle}
           </span>
           <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${getDifficultyBadge(topic.difficulty)}`}>
@@ -87,10 +90,10 @@ export default function TopicHeader({ topic }) {
 
       {/* Title & Subtitle */}
       <div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight break-words">
           {topic.title}
         </h1>
-        <p className="mt-1.5 text-sm sm:text-base text-slate-500 leading-relaxed max-w-3xl">
+        <p className="mt-1.5 text-xs sm:text-sm md:text-base text-slate-500 leading-relaxed max-w-3xl">
           {topic.subtitle}
         </p>
       </div>

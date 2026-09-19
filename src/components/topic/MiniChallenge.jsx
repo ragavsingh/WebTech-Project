@@ -93,10 +93,10 @@ export default function MiniChallenge({ challenge }) {
                 disabled={showResult && selectedOption?.correct}
                 className={`w-full text-left p-3.5 rounded-xl border text-xs sm:text-sm font-medium transition-all ${btnStyle}`}
               >
-                <div className="flex items-start justify-between">
-                  <span>{opt.text}</span>
+                <div className="flex items-start justify-between gap-3">
+                  <span className="flex-1 leading-relaxed break-words">{opt.text}</span>
                   {showResult && isSelected && (
-                    <span className="shrink-0 ml-2">
+                    <span className="shrink-0 mt-0.5">
                       {opt.correct ? (
                         <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                       ) : (

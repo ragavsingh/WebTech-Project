@@ -119,8 +119,11 @@ export default function LearnPage() {
               className="group bg-white rounded-2xl p-6 border border-slate-200/90 hover:border-indigo-300 shadow-card hover:shadow-card-hover transition-all flex flex-col justify-between space-y-4"
             >
               <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 border border-indigo-100">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <span 
+                    className="text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 border border-indigo-100 max-w-[180px] sm:max-w-none truncate"
+                    title={topic.unitTitle}
+                  >
                     {topic.unitTitle}
                   </span>
                   <div className="flex items-center space-x-2">
@@ -146,7 +149,7 @@ export default function LearnPage() {
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+              <div className="pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 text-xs">
                 <span className="font-semibold text-indigo-600 group-hover:translate-x-1 transition-transform flex items-center gap-1">
                   Start Interactive Topic <ArrowRight className="w-3.5 h-3.5" />
                 </span>
