@@ -4,13 +4,29 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WebTech Playground - Interactive Web Technology Learning Platform</title>
-    <!-- Inter Font -->
+    <title>WebTech Docs — Modern Web Engineering Standards</title>
+
+    <!-- Synchronous Theme Initializer: Prevents FOUC (Flash of Unstyled Content) -->
+    <script>
+      (function() {
+        try {
+          const stored = localStorage.getItem('theme');
+          const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (stored === 'dark' || (!stored && systemDark)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Inter & JetBrains Mono Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
-  <body class="bg-background-light text-navy-900 antialiased selection:bg-brand-500 selection:text-white min-h-screen">
+  <body class="bg-doc-bg dark:bg-doc-bg bg-doc-lightBg text-doc-text dark:text-doc-text text-doc-lightText antialiased selection:bg-doc-accent selection:text-white min-h-screen transition-colors">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

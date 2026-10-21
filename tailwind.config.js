@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -7,6 +8,36 @@ export default {
   theme: {
     extend: {
       colors: {
+        doc: {
+          bg: {
+            light: '#ffffff',
+            dark: '#0f0f11',
+          },
+          sidebar: {
+            light: '#f7f7f9',
+            dark: '#141416',
+          },
+          border: {
+            light: '#e6e6ec',
+            dark: '#242428',
+          },
+          hover: {
+            light: '#ededf2',
+            dark: '#1d1d22',
+          },
+          active: {
+            light: '#e2e2ea',
+            dark: '#26262c',
+          },
+          text: {
+            light: '#121214',
+            dark: '#ededf0',
+            mutedLight: '#6c6c78',
+            mutedDark: '#8f8f9e',
+            subtleLight: '#9a9aa8',
+            subtleDark: '#5e5e6c',
+          }
+        },
         background: {
           light: '#f8fafc',
           subtle: '#f1f5f9',

@@ -1,61 +1,59 @@
-# WebTech Playground 🌐🧪
+# WebTech Documentation 🌐📖
 
-An interactive learning, simulation, and documentation platform for Web Technology.
-
-Designed around the pedagogical cycle:
-**Explain → Visualize → Interact → Experiment → Practice → Quiz**
+A modern, high-precision engineering documentation platform for **Web Technology**, designed around the minimalist **Systematic** interface style.
 
 ---
 
-## ✨ Features
+## ⚡ Highlights
 
-- **Syllabus Coverage (Units 1–5)**: 64 comprehensive topics covering Internet fundamentals, HTML/CSS/DOM, XML, Web Services, AJAX, Web 2.0/3.0, and Future Web (AI, DWeb, IoT, WebXR, 5G).
-- **40+ Interactive Simulators**: Hands-on sandboxes for DNS packet resolution, HTTP lifecycles, DOM tree mutations, SOAP/WSDL, XML validation, Blockchain ledgers, WebAR/VR, and IoT dashboards.
-- **Web Technology Journey**: An interactive 15-node evolutionary roadmap tracing from the early Internet to the future symbiotic web.
-- **Challenges & Quizzes**: Hands-on debugging challenges and diagnostic quiz questions with instant feedback.
-- **Progress Tracking**: Real-time mastery tracker persisting topic completions and quiz scores.
-
----
-
-## 🛠️ Tech Stack
-
-- **Framework**: React 18 + Vite
-- **Styling**: Tailwind CSS
-- **Icons & Motion**: Lucide React + Framer Motion + Canvas Confetti
-- **Routing**: React Router v6
+- **Chapter-Wise Syllabus Architecture**: 6 comprehensive chapters and 49 deep-dive engineering topics covering foundational internet protocols to modern production systems.
+- **Nested Subtopic Hierarchy**: Every topic features 6 structured standard sections:
+  1. *Overview & Core Concept* (with physical-world intuition analogies)
+  2. *Technical Architecture & Protocols* (with ASCII topology diagrams & RFC specs)
+  3. *Real-Life Industry Cases* (Cloudflare, Netflix, Google, Wikipedia, Stripe, Tesla)
+  4. *Systems, Tools & Standards* (Wireshark, BGP, NGINX, WebGPU, K8s, OWASP)
+  5. *Practical Implementation & Code* (Copyable syntax-styled snippets)
+  6. *Common Pitfalls & Production Gotchas* (Mistake vs. Production Reality)
+- **Zero Distractions**: Clean typography, dark and light modes, zero gamified animations or packet widgets.
+- **Instant Global Search**: Fast fuzzy search command palette via `⌘K` or `Ctrl+K`.
+- **Fully Mobile Responsive**: Adaptive left drawer and responsive typography for all screen sizes.
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Quick Start
 
 ### 1. Install Dependencies
 ```bash
 npm install
 ```
 
-### 2. Start Development Server
+### 2. Run Local Development Server
 ```bash
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
-### 3. Build for Production
+### 3. Production Build
 ```bash
 npm run build
 ```
 
 ---
 
-## 📚 Syllabus Structure
+## 📑 Curriculum Structure
 
-- **Unit 1**: Web Fundamentals & Protocols (History, WWW, HTML, HTTP, SMTP, POP3, IMAP, MIME, DNS, Browsers, Web Servers)
-- **Unit 2**: HTML Fundamentals, DHTML, DOM & XML (Lists, Tables, Forms, Frames, DHTML, DOM Tree, XML, XSD, XSLT, SAX/DOM)
-- **Unit 3**: Web Services & Distributed Computing (SOA, UDDI, SOAP, WSDL, AJAX Asynchronous I/O, CORBA)
-- **Unit 4**: Web 2.0 to Web 3.0 (Social Web, RSS, Ruby on Rails, REST APIs, Semantic Web, RDF Triples, Widgets, Mashups, Edge Computing, Dark Mode)
-- **Unit 5**: The Future Web Lab (Web 4.0, AI Personalization, DWeb/IPFS, Blockchain, IoT, WebAR/WebVR, Smart Web, 5G MEC)
+- **Chapter 1**: Foundations of Internet & Network Architecture (Topics 1.1 – 1.8)
+- **Chapter 2**: HTML5, DHTML, DOM & XML Architecture (Topics 2.1 – 2.9)
+- **Chapter 3**: Web Services, Distributed Architectures & AJAX (Topics 3.1 – 3.9)
+- **Chapter 4**: Web 2.0, Social Web, Semantic Web & Information Systems (Topics 4.1 – 4.11)
+- **Chapter 5**: The Future Web — AI, Decentralization, IoT & Spatial Web (Topics 5.1 – 5.9)
+- **Chapter 6**: Production Web Engineering, Security & Performance (Topics 6.1 – 6.3)
 
 ---
 
-## 📄 License
+## 🛠️ Built With
 
-Educational open-source project for learning modern web technology.
+- **React 18** + **Vite**
+- **Tailwind CSS** (Custom Systematic palette + Dark/Light theme)
+- **Lucide Icons**
+- **React Router v6**
