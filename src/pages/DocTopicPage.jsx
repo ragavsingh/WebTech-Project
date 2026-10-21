@@ -113,7 +113,7 @@ export default function DocTopicPage() {
               <span>Go back</span>
             </button>
             <span className="text-doc-muted/40">/</span>
-            <span className="font-mono text-doc-muted">Chapter {topic.chapterNumber}</span>
+            <span className="font-mono text-doc-muted font-medium">Unit {topic.chapterNumber}</span>
             <span className="text-doc-muted/40">/</span>
             <span className="text-doc-text dark:text-doc-text text-doc-lightText font-medium truncate max-w-[180px] sm:max-w-xs">
               {topic.title}

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
-import { Menu, X, Search, Sun, Moon, BookOpen, Layers } from 'lucide-react';
+import { Menu, X, Search, Sun, Moon, BookOpen, Layers, GraduationCap } from 'lucide-react';
 import DocSidebar from './DocSidebar';
 import DocSearchModal from './DocSearchModal';
+import SyllabusModal from './SyllabusModal';
 import { useTheme } from '../../context/ThemeContext';
 
 export default function DocLayout({ children }) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
@@ -36,6 +38,12 @@ export default function DocLayout({ children }) {
         onClose={() => setIsSearchOpen(false)}
       />
 
+      {/* Syllabus Course Map Modal */}
+      <SyllabusModal
+        isOpen={isSyllabusOpen}
+        onClose={() => setIsSyllabusOpen(false)}
+      />
+
       {/* Mobile Top Header (hidden on desktop md:hidden) */}
       <header className="md:hidden sticky top-0 z-40 flex items-center justify-between px-4 py-3 bg-doc-sidebar dark:bg-doc-sidebar bg-doc-lightSidebar border-b border-doc-border dark:border-doc-border border-doc-lightBorder">
         <div className="flex items-center gap-3">
@@ -50,13 +58,21 @@ export default function DocLayout({ children }) {
             <span className="w-6 h-6 rounded bg-doc-text text-doc-bg font-mono font-bold text-xs flex items-center justify-center">
               WT
             </span>
-            <span className="font-semibold text-sm tracking-tight text-doc-text">
-              Systematic
+            <span className="font-bold text-sm tracking-tight text-doc-text">
+              WebTech
             </span>
           </Link>
         </div>
 
         <div className="flex items-center gap-2">
+          <button
+            onClick={() => setIsSyllabusOpen(true)}
+            className="p-1.5 rounded-md border border-doc-border hover:bg-doc-border/40 text-doc-muted"
+            aria-label="Course Syllabus"
+            title="Course Syllabus"
+          >
+            <GraduationCap className="w-4 h-4 text-doc-accent" />
+          </button>
           <button
             onClick={() => setIsSearchOpen(true)}
             className="p-1.5 rounded-md border border-doc-border hover:bg-doc-border/40 text-doc-muted"
@@ -80,7 +96,10 @@ export default function DocLayout({ children }) {
 
       {/* Desktop Sticky Left Sidebar */}
       <div className="hidden md:block w-72 lg:w-80 shrink-0 h-screen sticky top-0">
-        <DocSidebar onOpenSearch={() => setIsSearchOpen(true)} />
+        <DocSidebar
+          onOpenSearch={() => setIsSearchOpen(true)}
+          onOpenSyllabus={() => setIsSyllabusOpen(true)}
+        />
       </div>
 
       {/* Mobile Drawer Navigation */}
@@ -96,7 +115,7 @@ export default function DocLayout({ children }) {
           <div className="relative w-80 max-w-[85vw] h-full bg-doc-sidebar border-r border-doc-border z-10 flex flex-col shadow-2xl">
             <div className="p-3 border-b border-doc-border flex items-center justify-between">
               <span className="font-semibold text-xs uppercase tracking-wider text-doc-muted">
-                Documentation Navigation
+                WebTech Navigation
               </span>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -110,6 +129,10 @@ export default function DocLayout({ children }) {
                 onOpenSearch={() => {
                   setIsMobileMenuOpen(false);
                   setIsSearchOpen(true);
+                }}
+                onOpenSyllabus={() => {
+                  setIsMobileMenuOpen(false);
+                  setIsSyllabusOpen(true);
                 }}
                 onCloseMobile={() => setIsMobileMenuOpen(false)}
               />

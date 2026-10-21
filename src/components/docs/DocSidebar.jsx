@@ -15,7 +15,8 @@ import {
   ExternalLink,
   CheckCircle2,
   Terminal,
-  Bookmark
+  Bookmark,
+  GraduationCap
 } from 'lucide-react';
 import { DOC_CHAPTERS } from '../../data/docCurriculum';
 import { useTheme } from '../../context/ThemeContext';
@@ -29,7 +30,7 @@ const SUBTOPIC_ANCHORS = [
   { id: 'pitfalls', label: '6. Common Pitfalls' },
 ];
 
-export default function DocSidebar({ onOpenSearch, onCloseMobile }) {
+export default function DocSidebar({ onOpenSearch, onOpenSyllabus, onCloseMobile }) {
   const { topicId } = useParams();
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
@@ -75,7 +76,7 @@ export default function DocSidebar({ onOpenSearch, onCloseMobile }) {
 
   return (
     <aside className="w-full h-full flex flex-col bg-doc-sidebar dark:bg-doc-sidebar bg-doc-lightSidebar border-r border-doc-border dark:border-doc-border border-doc-lightBorder select-none text-doc-text dark:text-doc-text text-doc-lightText transition-colors">
-      {/* Brand Header */}
+      {/* Brand Header: Named "WebTech" */}
       <div className="p-4 border-b border-doc-border dark:border-doc-border border-doc-lightBorder flex items-center justify-between">
         <NavLink
           to="/"
@@ -87,8 +88,8 @@ export default function DocSidebar({ onOpenSearch, onCloseMobile }) {
           </div>
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="font-semibold text-sm tracking-tight text-doc-text dark:text-doc-text text-doc-lightText">
-                Systematic
+              <span className="font-bold text-base tracking-tight text-doc-text dark:text-doc-text text-doc-lightText group-hover:text-doc-accent transition-colors">
+                WebTech
               </span>
               <span className="px-1.5 py-0.2 text-[10px] font-mono uppercase tracking-wider rounded bg-doc-accent/15 text-doc-accent border border-doc-accent/30 font-semibold">
                 Docs
@@ -101,8 +102,8 @@ export default function DocSidebar({ onOpenSearch, onCloseMobile }) {
         </NavLink>
       </div>
 
-      {/* Search Input Trigger */}
-      <div className="p-3 border-b border-doc-border/60 dark:border-doc-border/60 border-doc-lightBorder/60">
+      {/* Quick Search & Syllabus Action Bar */}
+      <div className="p-3 border-b border-doc-border/60 dark:border-doc-border/60 border-doc-lightBorder/60 space-y-2">
         <button
           onClick={onOpenSearch}
           className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-normal border border-doc-border dark:border-doc-border border-doc-lightBorder bg-doc-bg/70 dark:bg-doc-bg/70 bg-doc-lightBg/70 text-doc-muted dark:text-doc-muted text-doc-lightMuted hover:border-doc-accent/50 hover:text-doc-text dark:hover:text-doc-text hover:text-doc-lightText transition-all"
@@ -115,9 +116,21 @@ export default function DocSidebar({ onOpenSearch, onCloseMobile }) {
             ⌘K
           </kbd>
         </button>
+
+        {/* Syllabus Course Map Button */}
+        <button
+          onClick={onOpenSyllabus}
+          className="w-full flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-medium border border-doc-border/50 hover:border-doc-accent/50 bg-doc-surface/40 hover:bg-doc-surface text-doc-text/80 transition-all"
+        >
+          <span className="flex items-center gap-2 text-[11px]">
+            <GraduationCap className="w-3.5 h-3.5 text-doc-accent" />
+            <span>Course Syllabus Map</span>
+          </span>
+          <span className="text-[10px] font-mono text-doc-muted">Units 1–5+</span>
+        </button>
       </div>
 
-      {/* Chapters & Topics Navigation Tree */}
+      {/* Units & Topics Navigation Tree */}
       <nav className="flex-1 overflow-y-auto px-2 py-3 space-y-1 text-xs">
         {DOC_CHAPTERS.map((chapter) => {
           const isExpanded = expandedChapters[chapter.id];
@@ -125,7 +138,7 @@ export default function DocSidebar({ onOpenSearch, onCloseMobile }) {
 
           return (
             <div key={chapter.id} className="mb-2">
-              {/* Chapter Header Toggle */}
+              {/* Unit Header Toggle */}
               <button
                 onClick={() => toggleChapter(chapter.id)}
                 className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-md text-left font-medium transition-colors ${
@@ -135,8 +148,8 @@ export default function DocSidebar({ onOpenSearch, onCloseMobile }) {
                 }`}
               >
                 <div className="flex items-center gap-2 min-w-0">
-                  <span className="w-4 text-[11px] font-mono text-doc-accent font-bold shrink-0">
-                    C{chapter.number}
+                  <span className="w-5 text-[11px] font-mono text-doc-accent font-bold shrink-0">
+                    U{chapter.number}
                   </span>
                   <span className="truncate text-xs tracking-tight">
                     {chapter.shortTitle || chapter.title}
@@ -207,7 +220,7 @@ export default function DocSidebar({ onOpenSearch, onCloseMobile }) {
         })}
       </nav>
 
-      {/* Sidebar Bottom Footer: Theme Toggle & Links */}
+      {/* Sidebar Bottom Footer: Theme Toggle & Metrics */}
       <div className="p-3 border-t border-doc-border dark:border-doc-border border-doc-lightBorder space-y-2 bg-doc-surface/40 dark:bg-doc-surface/40 bg-doc-lightSurface/40">
         {/* Theme Toggle Button */}
         <button
@@ -227,7 +240,7 @@ export default function DocSidebar({ onOpenSearch, onCloseMobile }) {
 
         {/* Global Curriculum Meta Info */}
         <div className="px-1 text-[11px] text-doc-muted/80 flex items-center justify-between font-mono">
-          <span>6 Chapters</span>
+          <span>6 Units</span>
           <span>•</span>
           <span>49 Topics</span>
           <span>•</span>
