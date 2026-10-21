@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
-import { Menu, X, Search, Sun, Moon, BookOpen, Layers, GraduationCap } from 'lucide-react';
+import { Menu, X, Search, Sun, Moon, BookOpen, Layers, GraduationCap, PanelLeft } from 'lucide-react';
 import DocSidebar from './DocSidebar';
 import DocSearchModal from './DocSearchModal';
 import SyllabusModal from './SyllabusModal';
@@ -10,20 +10,44 @@ export default function DocLayout({ children }) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isSyllabusOpen, setIsSyllabusOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(() => {
+    try {
+      return localStorage.getItem('webtech_sidebar_collapsed') === 'true';
+    } catch (e) {
+      return false;
+    }
+  });
+
   const { theme, toggleTheme } = useTheme();
   const location = useLocation();
+
+  const toggleSidebar = () => {
+    setIsSidebarCollapsed(prev => {
+      const next = !prev;
+      try {
+        localStorage.setItem('webtech_sidebar_collapsed', String(next));
+      } catch (e) {}
+      return next;
+    });
+  };
 
   // Close mobile drawer on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
 
-  // Global Cmd+K / Ctrl+K keyboard shortcut
+  // Global Keyboard shortcuts: Cmd/Ctrl+K for search, [ or Cmd/Ctrl+B to toggle sidebar
   useEffect(() => {
     function handleKeyDown(e) {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
         setIsSearchOpen(prev => !prev);
+      } else if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'b') {
+        e.preventDefault();
+        toggleSidebar();
+      } else if (e.key === '[' && !['INPUT', 'TEXTAREA'].includes(e.target.tagName)) {
+        e.preventDefault();
+        toggleSidebar();
       }
     }
     window.addEventListener('keydown', handleKeyDown);
@@ -49,10 +73,11 @@ export default function DocLayout({ children }) {
         <div className="flex items-center gap-3">
           <button
             onClick={() => setIsMobileMenuOpen(true)}
-            className="p-1.5 rounded-md border border-doc-border hover:bg-doc-border/40 text-doc-text"
+            className="p-1.5 rounded-lg border border-doc-border hover:bg-doc-border/40 text-doc-text"
             aria-label="Open documentation navigation"
+            title="Open topics sidebar"
           >
-            <Menu className="w-5 h-5" />
+            <PanelLeft className="w-5 h-5" />
           </button>
           <Link to="/" className="flex items-center gap-2">
             <span className="w-6 h-6 rounded bg-doc-text text-doc-bg font-mono font-bold text-xs flex items-center justify-center">
@@ -94,13 +119,37 @@ export default function DocLayout({ children }) {
         </div>
       </header>
 
-      {/* Desktop Sticky Left Sidebar */}
-      <div className="hidden md:block w-72 lg:w-80 shrink-0 h-screen sticky top-0">
-        <DocSidebar
-          onOpenSearch={() => setIsSearchOpen(true)}
-          onOpenSyllabus={() => setIsSyllabusOpen(true)}
-        />
+      {/* Desktop Sticky Left Sidebar with smooth slide animation */}
+      <div
+        className={`hidden md:block shrink-0 h-screen sticky top-0 transition-all duration-300 ease-in-out overflow-hidden z-30 ${
+          isSidebarCollapsed ? 'w-0' : 'w-72 lg:w-80'
+        }`}
+      >
+        <div className="w-72 lg:w-80 h-full">
+          <DocSidebar
+            onOpenSearch={() => setIsSearchOpen(true)}
+            onOpenSyllabus={() => setIsSyllabusOpen(true)}
+            onToggleSidebar={toggleSidebar}
+            isSidebarCollapsed={isSidebarCollapsed}
+          />
+        </div>
       </div>
+
+      {/* Desktop Reopen Sidebar Button (Visible when sidebar is collapsed) */}
+      {isSidebarCollapsed && (
+        <button
+          onClick={toggleSidebar}
+          className="hidden md:flex items-center gap-2 fixed top-3.5 left-4 z-40 px-2.5 py-1.5 rounded-xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md shadow-sm text-zinc-600 dark:text-zinc-300 hover:text-doc-accent dark:hover:text-doc-accent hover:border-doc-accent/60 transition-all group"
+          title="Open sidebar ([ or Ctrl+B)"
+          aria-label="Open sidebar"
+        >
+          <PanelLeft className="w-4 h-4 text-zinc-500 group-hover:text-doc-accent transition-colors" />
+          <span className="text-xs font-medium">Topics</span>
+          <kbd className="text-[10px] font-mono px-1 py-0.2 bg-zinc-100 dark:bg-zinc-800 rounded text-zinc-400 border border-zinc-200/50 dark:border-zinc-700/50">
+            [
+          </kbd>
+        </button>
+      )}
 
       {/* Mobile Drawer Navigation */}
       {isMobileMenuOpen && (

@@ -22,7 +22,8 @@ import {
   Users,
   Network,
   Server,
-  Code
+  Code,
+  PanelLeft
 } from 'lucide-react';
 import { DOMAIN_TOPICS } from '../../data/domainTopicsData';
 import { useTheme } from '../../context/ThemeContext';
@@ -49,7 +50,7 @@ const ICONS = {
   Shield
 };
 
-export default function DocSidebar({ onOpenSearch, onOpenSyllabus, onCloseMobile }) {
+export default function DocSidebar({ onOpenSearch, onOpenSyllabus, onCloseMobile, onToggleSidebar, isSidebarCollapsed }) {
   const { topicId } = useParams();
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
@@ -115,6 +116,17 @@ export default function DocSidebar({ onOpenSearch, onOpenSyllabus, onCloseMobile
             </p>
           </div>
         </NavLink>
+
+        {onToggleSidebar && (
+          <button
+            onClick={onToggleSidebar}
+            className="hidden md:flex p-1.5 rounded-lg border border-zinc-200/80 dark:border-zinc-800/80 text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800/80 transition-colors"
+            title="Close sidebar ([ or Ctrl+B)"
+            aria-label="Close sidebar"
+          >
+            <PanelLeft className="w-4 h-4" />
+          </button>
+        )}
       </div>
 
       {/* Quick Search & Syllabus Action Bar */}
