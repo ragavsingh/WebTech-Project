@@ -467,35 +467,35 @@ export default function DocTopicPage() {
           </section>
         </article>
 
-        {/* Bottom Pagination: Previous and Next Topic Navigation */}
-        <nav className="pt-16 pb-16 mt-16 border-t border-zinc-200/60 dark:border-zinc-800/60 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {/* Bottom Pagination: Previous and Next Topic Navigation with strict containment */}
+        <nav className="pt-16 pb-16 mt-16 border-t border-zinc-200/60 dark:border-zinc-800/60 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full min-w-0">
           {prev ? (
             <Link
               to={`/topic/${prev.id}`}
-              className="group flex flex-col p-5 rounded-2xl border border-zinc-200/60 dark:border-zinc-800/60 hover:border-doc-accent/60 bg-zinc-50/50 dark:bg-zinc-900/30 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-all text-left"
+              className="group flex flex-col p-5 rounded-2xl border border-zinc-200/60 dark:border-zinc-800/60 hover:border-doc-accent/60 bg-zinc-50/50 dark:bg-zinc-900/30 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-all text-left min-w-0 overflow-hidden"
             >
-              <span className="flex items-center gap-1.5 text-xs text-zinc-500 font-mono mb-1 group-hover:text-doc-accent transition-colors">
-                <ArrowLeft className="w-3.5 h-3.5" />
+              <span className="flex items-center gap-1.5 text-xs text-zinc-500 font-mono mb-1 group-hover:text-doc-accent transition-colors shrink-0">
+                <ArrowLeft className="w-3.5 h-3.5 shrink-0" />
                 <span>Previous Topic</span>
               </span>
-              <span className="text-sm font-semibold text-zinc-900 dark:text-white group-hover:text-doc-accent transition-colors truncate">
+              <span className="text-sm font-semibold text-zinc-900 dark:text-white group-hover:text-doc-accent transition-colors truncate block w-full max-w-full">
                 {prev.code} {prev.title}
               </span>
             </Link>
           ) : (
-            <div />
+            <div className="hidden sm:block" />
           )}
 
           {next && (
             <Link
               to={`/topic/${next.id}`}
-              className="group flex flex-col p-5 rounded-2xl border border-zinc-200/60 dark:border-zinc-800/60 hover:border-doc-accent/60 bg-zinc-50/50 dark:bg-zinc-900/30 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-all text-right sm:items-end"
+              className="group flex flex-col p-5 rounded-2xl border border-zinc-200/60 dark:border-zinc-800/60 hover:border-doc-accent/60 bg-zinc-50/50 dark:bg-zinc-900/30 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-all text-left sm:text-right sm:items-end min-w-0 overflow-hidden"
             >
-              <span className="flex items-center gap-1.5 text-xs text-zinc-500 font-mono mb-1 group-hover:text-doc-accent transition-colors">
+              <span className="flex items-center gap-1.5 text-xs text-zinc-500 font-mono mb-1 group-hover:text-doc-accent transition-colors shrink-0">
                 <span>Next Topic</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight className="w-3.5 h-3.5 shrink-0" />
               </span>
-              <span className="text-sm font-semibold text-zinc-900 dark:text-white group-hover:text-doc-accent transition-colors truncate">
+              <span className="text-sm font-semibold text-zinc-900 dark:text-white group-hover:text-doc-accent transition-colors truncate block w-full max-w-full">
                 {next.code} {next.title}
               </span>
             </Link>
