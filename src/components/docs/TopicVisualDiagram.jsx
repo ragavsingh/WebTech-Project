@@ -237,7 +237,7 @@ export default function TopicVisualDiagram({ topicId, title, company }) {
     }
 
     // 6. SOAP Protocol Envelope Architecture
-    if (topicId?.includes('3.4') || topicId?.includes('3.5') || topicId?.includes('3.1')) {
+    if (topicId?.includes('3.3') || topicId?.includes('3.4') || topicId?.includes('3.5') || topicId?.includes('3.1')) {
       return (
         <div className="w-full">
           <svg viewBox="0 0 780 220" className="w-full h-auto font-mono text-[11px]" fill="none" xmlns="http://www.w3.org/2000/svg">

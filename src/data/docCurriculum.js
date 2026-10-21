@@ -3,14 +3,14 @@
  * Aggregates Chapters, Domain Topics, Subtopics, and Deep-Dive Educational Content
  */
 
-import { CHAPTERS_DATA } from './chaptersData';
-import { DOMAIN_TOPICS } from './domainTopicsData';
-import { CHAPTER_1_TOPICS } from './content/chapter1';
-import { CHAPTER_2_TOPICS } from './content/chapter2';
-import { CHAPTER_3_TOPICS } from './content/chapter3';
-import { CHAPTER_4_TOPICS } from './content/chapter4';
-import { CHAPTER_5_TOPICS } from './content/chapter5';
-import { CHAPTER_6_TOPICS } from './content/chapter6';
+import { CHAPTERS_DATA } from './chaptersData.js';
+import { DOMAIN_TOPICS } from './domainTopicsData.js';
+import { CHAPTER_1_TOPICS } from './content/chapter1.js';
+import { CHAPTER_2_TOPICS } from './content/chapter2.js';
+import { CHAPTER_3_TOPICS } from './content/chapter3.js';
+import { CHAPTER_4_TOPICS } from './content/chapter4.js';
+import { CHAPTER_5_TOPICS } from './content/chapter5.js';
+import { CHAPTER_6_TOPICS } from './content/chapter6.js';
 
 export const ALL_DOC_TOPICS_MAP = {
   ...CHAPTER_1_TOPICS,

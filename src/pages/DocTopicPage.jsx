@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import { getDocTopicById, getAdjacentTopics, getDomainTopicForTopicId } from '../data/docCurriculum';
 import TopicVisualDiagram from '../components/docs/TopicVisualDiagram';
+import CodeBlock from '../components/docs/CodeBlock';
 
 const SUBTOPIC_SECTIONS = [
   { id: 'overview', title: '1. Overview & Core Concept' },
@@ -42,11 +43,25 @@ export default function DocTopicPage() {
 
   const [copiedCode, setCopiedCode] = useState(false);
   const [activeSectionId, setActiveSectionId] = useState('overview');
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   // Scroll to top on topic change
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
     setActiveSectionId('overview');
+    setScrollProgress(0);
+  }, [effectiveTopicId]);
+
+  // Track scroll progress percentage
+  useEffect(() => {
+    const handleScroll = () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      if (total > 0) {
+        setScrollProgress(Math.min(100, Math.max(0, (window.scrollY / total) * 100)));
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [effectiveTopicId]);
 
   // Track active section for right rail table of contents
@@ -101,7 +116,12 @@ export default function DocTopicPage() {
   }
 
   return (
-    <div className="w-full min-h-screen py-8 px-4 sm:px-8 lg:px-12 xl:px-16 flex justify-center">
+    <div className="w-full min-h-screen py-8 px-4 sm:px-8 lg:px-12 xl:px-16 flex justify-center relative">
+      {/* Top Reading Progress Bar (Fixed at top of screen) */}
+      <div
+        className="fixed top-0 left-0 right-0 h-[2.5px] z-50 bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-400 pointer-events-none transition-all duration-75"
+        style={{ width: `${scrollProgress}%` }}
+      />
       <div className="w-full max-w-4xl min-w-0">
         {/* Top Action Bar: Clean, calm breadcrumbs without harsh divider lines or pill boxes */}
         <div className="flex flex-wrap items-center justify-between gap-3 pb-6 text-xs text-doc-muted dark:text-zinc-400">
@@ -381,43 +401,12 @@ export default function DocTopicPage() {
               {topic.implementation?.explanation}
             </p>
 
-            {/* Code Block Container: Dark syntax block in both modes for high readability */}
+            {/* Code Block Container with Syntax Highlighting and Line Numbers */}
             {topic.implementation?.code && (
-              <div className="my-6 rounded-2xl overflow-hidden bg-zinc-950 border border-zinc-800 shadow-md">
-                {/* Header */}
-                <div className="flex items-center justify-between px-4 py-2.5 border-b border-zinc-800/80 bg-zinc-900/70 text-xs font-mono">
-                  <span className="flex items-center gap-2 text-zinc-400">
-                    <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500/70" />
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/70" />
-                    <span className="uppercase text-[11px] font-semibold text-zinc-200 ml-2">
-                      {topic.implementation.language || 'code'}
-                    </span>
-                  </span>
-
-                  <button
-                    onClick={() => handleCopyCode(topic.implementation.code)}
-                    className="flex items-center gap-1.5 px-3 py-1 rounded-lg text-[11px] font-mono bg-zinc-800 hover:bg-zinc-700 text-zinc-200 transition-colors"
-                  >
-                    {copiedCode ? (
-                      <>
-                        <Check className="w-3.5 h-3.5 text-emerald-400" />
-                        <span className="text-emerald-400 font-semibold">Copied!</span>
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-3.5 h-3.5 text-zinc-400" />
-                        <span>Copy snippet</span>
-                      </>
-                    )}
-                  </button>
-                </div>
-
-                {/* Preformatted Code */}
-                <div className="p-4 sm:p-5 overflow-x-auto text-xs sm:text-[13px] font-mono leading-relaxed text-zinc-200 bg-zinc-950 select-text">
-                  <pre className="m-0 font-mono text-zinc-200">{topic.implementation.code.trim()}</pre>
-                </div>
-              </div>
+              <CodeBlock
+                code={topic.implementation.code}
+                language={topic.implementation.language || 'javascript'}
+              />
             )}
           </section>
 

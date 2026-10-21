@@ -45,7 +45,7 @@ export const DOMAIN_TOPICS = [
         difficulty: 'Fundamental'
       },
       {
-        id: '1.5-web-browsers-engines',
+        id: '1.5-web-browsers',
         code: '1.5',
         title: 'Modern Web Browsers & Critical Rendering Engines',
         subtitle: 'Blink, Gecko, WebKit, DOM/CSSOM parsing, layout recalculation, and GPU compositing',
@@ -53,7 +53,7 @@ export const DOMAIN_TOPICS = [
         difficulty: 'Intermediate'
       },
       {
-        id: '1.6-web-servers-hosting',
+        id: '1.6-web-servers',
         code: '1.6',
         title: 'Web Servers & Hosting Architectures',
         subtitle: 'NGINX event loops, Apache process models, reverse proxies, and virtual hosts',
@@ -61,7 +61,7 @@ export const DOMAIN_TOPICS = [
         difficulty: 'Fundamental'
       },
       {
-        id: '1.7-mail-media-protocols',
+        id: '1.7-email-protocols',
         code: '1.7',
         title: 'Internet Mail & Media Protocols: SMTP, POP3, IMAP & MIME',
         subtitle: 'Store-and-forward architecture, TCP ports, binary attachments, and multipart boundaries',
@@ -69,7 +69,7 @@ export const DOMAIN_TOPICS = [
         difficulty: 'Intermediate'
       },
       {
-        id: '1.8-end-to-end-request-lifecycle',
+        id: '1.8-anatomy-of-a-web-request',
         code: '1.8',
         title: 'The End-to-End Web Request Lifecycle: Browser to Wire',
         subtitle: 'Step-by-step trace: URL keystroke, DNS resolution, TLS handshake, HTTP stream, and painting',
@@ -197,42 +197,34 @@ export const DOMAIN_TOPICS = [
         difficulty: 'Fundamental'
       },
       {
-        id: '3.2-web-service-architecture',
+        id: '3.2-uddi-registry',
         code: '3.2',
-        title: 'Web Service Architecture & Core Components',
-        subtitle: 'Publish-Find-Bind lifecycle, XML-RPC, SOAP, and transport independence over HTTP/SMTP',
-        readTime: '16 min',
+        title: 'UDDI: Service Discovery & Business Registries',
+        subtitle: 'White pages, yellow pages, green pages, tModels, and why modern microservices evolved past UDDI',
+        readTime: '15 min',
         difficulty: 'Intermediate'
       },
       {
-        id: '3.3-uddi-discovery',
+        id: '3.3-soap-protocol',
         code: '3.3',
-        title: 'UDDI: Universal Description, Discovery, and Integration',
-        subtitle: 'White pages, yellow pages, green pages, tModels, and decentralized API registries',
-        readTime: '14 min',
-        difficulty: 'Intermediate'
-      },
-      {
-        id: '3.4-soap-protocol',
-        code: '3.4',
-        title: 'SOAP Protocol: Envelopes, Headers, Body & Faults',
-        subtitle: 'XML message structure, WS-Security headers, RPC vs Document style, and fault blocks',
+        title: 'SOAP: Simple Object Access Protocol & Envelopes',
+        subtitle: 'SOAP 1.1/1.2 wire format, Envelopes, Headers, WS-Security, Body, and SOAP Fault handling',
         readTime: '18 min',
         difficulty: 'Intermediate'
       },
       {
-        id: '3.5-wsdl-contracts',
-        code: '3.5',
+        id: '3.4-wsdl-contracts',
+        code: '3.4',
         title: 'WSDL: Web Services Description Language Contracts',
         subtitle: 'Service interface definitions: types, messages, portTypes, bindings, and endpoints',
         readTime: '18 min',
         difficulty: 'Intermediate'
       },
       {
-        id: '3.6-developing-deploying-web-services',
-        code: '3.6',
-        title: 'Developing & Deploying Enterprise Web Services',
-        subtitle: 'Contract-first vs Code-first methodologies, JAX-WS, Apache Axis2, and enterprise deployments',
+        id: '3.5-developing-web-services',
+        code: '3.5',
+        title: 'Developing & Deploying Web Services in Production',
+        subtitle: 'Contract-First vs Code-First design, web service lifecycles, and deployment pipelines',
         readTime: '18 min',
         difficulty: 'Intermediate'
       },
@@ -254,6 +246,14 @@ export const DOMAIN_TOPICS = [
     iconName: 'Zap',
     unitBadge: 'Unit 3',
     topics: [
+      {
+        id: '3.6-ajax-foundations',
+        code: '3.6',
+        title: 'AJAX Foundations: Asynchronous Web Architecture',
+        subtitle: 'Jesse James Garrett genesis, asynchronous decoupling, XMLHttpRequests, and DOM update cycles',
+        readTime: '16 min',
+        difficulty: 'Fundamental'
+      },
       {
         id: '3.7-ajax-performance',
         code: '3.7',
