@@ -19,7 +19,8 @@ import {
   FileCode,
   Info
 } from 'lucide-react';
-import { getDocTopicById, getAdjacentTopics } from '../data/docCurriculum';
+import { getDocTopicById, getAdjacentTopics, getDomainTopicForTopicId } from '../data/docCurriculum';
+import TopicVisualDiagram from '../components/docs/TopicVisualDiagram';
 
 const SUBTOPIC_SECTIONS = [
   { id: 'overview', title: '1. Overview & Core Concept' },
@@ -37,6 +38,7 @@ export default function DocTopicPage() {
   // If no topicId in URL, default to 1.1
   const effectiveTopicId = topicId || '1.1-history-of-the-internet';
   const topic = getDocTopicById(effectiveTopicId);
+  const domainTopic = getDomainTopicForTopicId(effectiveTopicId);
   const { prev, next } = getAdjacentTopics(effectiveTopicId);
 
   const [copiedCode, setCopiedCode] = useState(false);
@@ -113,7 +115,7 @@ export default function DocTopicPage() {
               <span>Go back</span>
             </button>
             <span className="text-doc-muted/40">/</span>
-            <span className="font-mono text-doc-muted font-medium">Unit {topic.chapterNumber}</span>
+            <span className="font-mono text-doc-muted font-medium">{domainTopic.title}</span>
             <span className="text-doc-muted/40">/</span>
             <span className="text-doc-text dark:text-doc-text text-doc-lightText font-medium truncate max-w-[180px] sm:max-w-xs">
               {topic.title}
@@ -131,10 +133,15 @@ export default function DocTopicPage() {
           </div>
         </div>
 
-        {/* Topic Header: Code, Big Title & Lead Paragraph */}
+        {/* Topic Header: Code, Domain Badge, Big Title & Lead Paragraph */}
         <header className="pt-8 pb-10 border-b border-doc-border/60 dark:border-doc-border/60 border-doc-lightBorder/80">
-          <div className="inline-block px-2.5 py-1 mb-4 rounded-md font-mono text-xs font-bold tracking-wider uppercase bg-doc-accent/15 text-doc-accent border border-doc-accent/30">
-            Topic {topic.code}
+          <div className="flex flex-wrap items-center gap-2 mb-4">
+            <span className="px-2.5 py-1 rounded-md font-mono text-xs font-bold tracking-wider uppercase bg-doc-accent/15 text-doc-accent border border-doc-accent/30">
+              Topic {topic.code}
+            </span>
+            <span className="px-2.5 py-1 rounded-md font-mono text-xs text-doc-muted bg-doc-border/40 dark:bg-doc-border/40 bg-doc-lightBorder/60 border border-doc-border/60">
+              {domainTopic.unitBadge} • {domainTopic.title}
+            </span>
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-black tracking-tight text-doc-text dark:text-doc-text text-doc-lightText leading-[1.15] mb-4">
             {topic.title}
@@ -209,6 +216,13 @@ export default function DocTopicPage() {
             <p className="text-sm sm:text-base leading-relaxed text-doc-text/90 dark:text-doc-text/90 text-doc-lightText/90 mb-6">
               {topic.architecture?.description}
             </p>
+
+            {/* Visual Vector Architecture Blueprint */}
+            <TopicVisualDiagram
+              topicId={topic.id}
+              title={topic.title}
+              company={topic.reallife?.company}
+            />
 
             {/* ASCII / Monospace Architecture Diagram */}
             {topic.architecture?.diagram && (

@@ -7,7 +7,7 @@ import {
   ChevronDown,
   ChevronRight,
   BookOpen,
-  FileText,
+  FileCode,
   Layers,
   Cpu,
   Shield,
@@ -16,19 +16,39 @@ import {
   CheckCircle2,
   Terminal,
   Bookmark,
-  GraduationCap
+  GraduationCap,
+  Globe,
+  Zap,
+  Users,
+  Network,
+  Server,
+  Code
 } from 'lucide-react';
-import { DOC_CHAPTERS } from '../../data/docCurriculum';
+import { DOMAIN_TOPICS } from '../../data/domainTopicsData';
 import { useTheme } from '../../context/ThemeContext';
 
 const SUBTOPIC_ANCHORS = [
   { id: 'overview', label: '1. Overview & Concept' },
-  { id: 'architecture', label: '2. Architecture & Protocols' },
-  { id: 'reallife', label: '3. Real-Life Industry Case' },
+  { id: 'architecture', label: '2. Architecture & Blueprint' },
+  { id: 'reallife', label: '3. Real-Life Case Study' },
   { id: 'systems', label: '4. Systems, Tools & Standards' },
   { id: 'implementation', label: '5. Practical Implementation' },
   { id: 'pitfalls', label: '6. Common Pitfalls' },
 ];
+
+// Icon mapping for Domain Topics
+const ICONS = {
+  Globe,
+  FileCode,
+  Layers,
+  Code,
+  Server,
+  Zap,
+  Users,
+  Network,
+  Sparkles,
+  Shield
+};
 
 export default function DocSidebar({ onOpenSearch, onOpenSyllabus, onCloseMobile }) {
   const { topicId } = useParams();
@@ -38,31 +58,31 @@ export default function DocSidebar({ onOpenSearch, onOpenSyllabus, onCloseMobile
   // Active topic ID (defaults to '1.1-history-of-the-internet' if root)
   const currentTopicId = topicId || '1.1-history-of-the-internet';
 
-  // Determine which chapter the active topic belongs to
-  const activeChapter = DOC_CHAPTERS.find(ch =>
-    ch.topics.some(t => t.id === currentTopicId)
+  // Determine which domain category the active topic belongs to
+  const activeDomain = DOMAIN_TOPICS.find(d =>
+    d.topics.some(t => t.id === currentTopicId)
   );
 
-  // Expanded chapters state (keep active chapter expanded by default)
-  const [expandedChapters, setExpandedChapters] = useState(() => {
+  // Expanded domain topics state (keep active domain expanded by default)
+  const [expandedDomains, setExpandedDomains] = useState(() => {
     const initial = {};
-    DOC_CHAPTERS.forEach(ch => {
-      initial[ch.id] = ch.id === (activeChapter?.id || 'chapter-1');
+    DOMAIN_TOPICS.forEach(d => {
+      initial[d.id] = d.id === (activeDomain?.id || DOMAIN_TOPICS[0].id);
     });
     return initial;
   });
 
-  // Keep active chapter expanded when route changes
+  // Keep active domain expanded when route changes
   useEffect(() => {
-    if (activeChapter) {
-      setExpandedChapters(prev => ({ ...prev, [activeChapter.id]: true }));
+    if (activeDomain) {
+      setExpandedDomains(prev => ({ ...prev, [activeDomain.id]: true }));
     }
-  }, [activeChapter]);
+  }, [activeDomain]);
 
-  const toggleChapter = (chapterId) => {
-    setExpandedChapters(prev => ({
+  const toggleDomain = (domainId) => {
+    setExpandedDomains(prev => ({
       ...prev,
-      [chapterId]: !prev[chapterId]
+      [domainId]: !prev[domainId]
     }));
   };
 
@@ -130,34 +150,33 @@ export default function DocSidebar({ onOpenSearch, onOpenSyllabus, onCloseMobile
         </button>
       </div>
 
-      {/* Units & Topics Navigation Tree */}
-      <nav className="flex-1 overflow-y-auto px-2 py-3 space-y-1 text-xs">
-        {DOC_CHAPTERS.map((chapter) => {
-          const isExpanded = expandedChapters[chapter.id];
-          const hasActiveTopic = chapter.topics.some(t => t.id === currentTopicId);
+      {/* Idea 1: Topic -> Subtopic Navigation Tree */}
+      <nav className="flex-1 overflow-y-auto px-2 py-3 space-y-2.5 text-xs">
+        {DOMAIN_TOPICS.map((domain) => {
+          const isExpanded = expandedDomains[domain.id];
+          const hasActiveTopic = domain.topics.some(t => t.id === currentTopicId);
+          const IconComponent = ICONS[domain.iconName] || Globe;
 
           return (
-            <div key={chapter.id} className="mb-2">
-              {/* Unit Header Toggle */}
+            <div key={domain.id} className="space-y-1">
+              {/* Domain Topic Header */}
               <button
-                onClick={() => toggleChapter(chapter.id)}
+                onClick={() => toggleDomain(domain.id)}
                 className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-md text-left font-medium transition-colors ${
                   hasActiveTopic
-                    ? 'text-doc-text dark:text-doc-text text-doc-lightText font-semibold'
-                    : 'text-doc-muted dark:text-doc-muted text-doc-lightMuted hover:text-doc-text dark:hover:text-doc-text hover:text-doc-lightText'
+                    ? 'text-doc-text dark:text-doc-text text-doc-lightText font-semibold bg-doc-border/30 dark:bg-doc-border/30 bg-doc-lightBorder/40'
+                    : 'text-doc-muted dark:text-doc-muted text-doc-lightMuted hover:text-doc-text dark:hover:text-doc-text hover:text-doc-lightText hover:bg-doc-border/20'
                 }`}
               >
                 <div className="flex items-center gap-2 min-w-0">
-                  <span className="w-5 text-[11px] font-mono text-doc-accent font-bold shrink-0">
-                    U{chapter.number}
-                  </span>
-                  <span className="truncate text-xs tracking-tight">
-                    {chapter.shortTitle || chapter.title}
+                  <IconComponent className={`w-3.5 h-3.5 shrink-0 ${hasActiveTopic ? 'text-doc-accent' : 'text-doc-muted'}`} />
+                  <span className="truncate text-xs font-semibold tracking-tight">
+                    {domain.title}
                   </span>
                 </div>
-                <div className="flex items-center gap-1 shrink-0 ml-1">
-                  <span className="text-[10px] font-mono text-doc-muted/70">
-                    {chapter.topics.length}
+                <div className="flex items-center gap-1.5 shrink-0 ml-1">
+                  <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-doc-border/50 text-doc-muted">
+                    {domain.unitBadge}
                   </span>
                   {isExpanded ? (
                     <ChevronDown className="w-3.5 h-3.5 text-doc-muted" />
@@ -167,10 +186,10 @@ export default function DocSidebar({ onOpenSearch, onOpenSyllabus, onCloseMobile
                 </div>
               </button>
 
-              {/* Topics List */}
+              {/* Subtopics List */}
               {isExpanded && (
-                <div className="mt-1 ml-2.5 pl-2 border-l border-doc-border/60 dark:border-doc-border/60 border-doc-lightBorder/80 space-y-0.5">
-                  {chapter.topics.map((topic) => {
+                <div className="ml-2 pl-2 border-l border-doc-border/60 dark:border-doc-border/60 border-doc-lightBorder/80 space-y-0.5">
+                  {domain.topics.map((topic) => {
                     const isActive = topic.id === currentTopicId;
 
                     return (
@@ -180,7 +199,7 @@ export default function DocSidebar({ onOpenSearch, onOpenSyllabus, onCloseMobile
                           onClick={onCloseMobile}
                           className={`group flex items-start gap-2 px-2 py-1.5 rounded text-[12px] transition-all ${
                             isActive
-                              ? 'bg-doc-border/60 dark:bg-doc-border/60 bg-doc-lightBorder/80 text-doc-text dark:text-doc-text text-doc-lightText font-semibold shadow-sm'
+                              ? 'bg-doc-border/70 dark:bg-doc-border/70 bg-doc-lightBorder/80 text-doc-text dark:text-doc-text text-doc-lightText font-semibold shadow-sm'
                               : 'text-doc-muted dark:text-doc-muted text-doc-lightMuted hover:text-doc-text dark:hover:text-doc-text hover:text-doc-lightText hover:bg-doc-border/20'
                           }`}
                         >
@@ -196,7 +215,7 @@ export default function DocSidebar({ onOpenSearch, onOpenSyllabus, onCloseMobile
                           </span>
                         </NavLink>
 
-                        {/* Nested Subtopics for the currently active topic */}
+                        {/* In-page Sections for Active Subtopic */}
                         {isActive && (
                           <div className="mt-1 ml-4 pl-2 border-l border-doc-accent/40 space-y-0.5 py-0.5">
                             {SUBTOPIC_ANCHORS.map((sub) => (
@@ -240,11 +259,11 @@ export default function DocSidebar({ onOpenSearch, onOpenSyllabus, onCloseMobile
 
         {/* Global Curriculum Meta Info */}
         <div className="px-1 text-[11px] text-doc-muted/80 flex items-center justify-between font-mono">
-          <span>6 Units</span>
+          <span>10 Domain Topics</span>
           <span>•</span>
-          <span>49 Topics</span>
+          <span>49 Articles</span>
           <span>•</span>
-          <span>294 Subtopics</span>
+          <span>294 Sections</span>
         </div>
       </div>
     </aside>

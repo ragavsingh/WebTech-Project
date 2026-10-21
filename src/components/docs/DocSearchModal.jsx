@@ -126,7 +126,7 @@ export default function DocSearchModal({ isOpen, onClose }) {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-0.5">
                       <span className="text-xs uppercase tracking-wider text-doc-muted dark:text-doc-muted text-doc-lightMuted font-mono">
-                        Unit {result.chapterNumber}
+                        {result.domainTitle || result.unitBadge || `Unit ${result.chapterNumber}`}
                       </span>
                       {result.company && (
                         <span className="inline-flex items-center gap-1 text-[11px] text-amber-500 font-medium">

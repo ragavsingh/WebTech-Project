@@ -1,9 +1,10 @@
 /**
  * Central Documentation Curriculum Index
- * Aggregates Chapters, Topics, and Deep-Dive Educational Content
+ * Aggregates Chapters, Domain Topics, Subtopics, and Deep-Dive Educational Content
  */
 
 import { CHAPTERS_DATA } from './chaptersData';
+import { DOMAIN_TOPICS } from './domainTopicsData';
 import { CHAPTER_1_TOPICS } from './content/chapter1';
 import { CHAPTER_2_TOPICS } from './content/chapter2';
 import { CHAPTER_3_TOPICS } from './content/chapter3';
@@ -21,14 +22,15 @@ export const ALL_DOC_TOPICS_MAP = {
 };
 
 export const DOC_CHAPTERS = CHAPTERS_DATA;
+export { DOMAIN_TOPICS };
 
-// Flattened ordered list of all topic summaries
-export const ORDERED_TOPICS = DOC_CHAPTERS.flatMap(chapter =>
-  chapter.topics.map(topic => ({
+// Flattened ordered list of all topic summaries across the 10 domain topics
+export const ORDERED_TOPICS = DOMAIN_TOPICS.flatMap(domain =>
+  domain.topics.map(topic => ({
     ...topic,
-    chapterId: chapter.id,
-    chapterNumber: chapter.number,
-    chapterTitle: chapter.title
+    domainId: domain.id,
+    domainTitle: domain.title,
+    unitBadge: domain.unitBadge
   }))
 );
 
@@ -45,6 +47,14 @@ export function getDocTopicById(topicId) {
  */
 export function getDefaultTopic() {
   return ALL_DOC_TOPICS_MAP['1.1-history-of-the-internet'];
+}
+
+/**
+ * Find which Domain Topic category contains the given topic ID
+ */
+export function getDomainTopicForTopicId(topicId) {
+  if (!topicId) return DOMAIN_TOPICS[0];
+  return DOMAIN_TOPICS.find(domain => domain.topics.some(t => t.id === topicId)) || DOMAIN_TOPICS[0];
 }
 
 /**
@@ -93,6 +103,12 @@ export function searchDocTopics(query) {
     if (topicMeta.subtitle && topicMeta.subtitle.toLowerCase().includes(q)) {
       score += 20;
       matches.push('Topic subtitle');
+    }
+
+    // Check domain title match
+    if (topicMeta.domainTitle && topicMeta.domainTitle.toLowerCase().includes(q)) {
+      score += 15;
+      matches.push(topicMeta.domainTitle);
     }
 
     // Check overview and key points
