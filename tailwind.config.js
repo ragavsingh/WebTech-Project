@@ -9,34 +9,22 @@ export default {
     extend: {
       colors: {
         doc: {
-          bg: {
-            light: '#ffffff',
-            dark: '#0f0f11',
-          },
-          sidebar: {
-            light: '#f7f7f9',
-            dark: '#141416',
-          },
-          border: {
-            light: '#e6e6ec',
-            dark: '#242428',
-          },
-          hover: {
-            light: '#ededf2',
-            dark: '#1d1d22',
-          },
-          active: {
-            light: '#e2e2ea',
-            dark: '#26262c',
-          },
-          text: {
-            light: '#121214',
-            dark: '#ededf0',
-            mutedLight: '#6c6c78',
-            mutedDark: '#8f8f9e',
-            subtleLight: '#9a9aa8',
-            subtleDark: '#5e5e6c',
-          }
+          bg: '#0f0f11',
+          lightBg: '#ffffff',
+          sidebar: '#141416',
+          lightSidebar: '#f8f9fa',
+          surface: '#18181b',
+          lightSurface: '#ffffff',
+          border: '#27272a',
+          lightBorder: '#e4e4e7',
+          hover: '#222226',
+          lightHover: '#f1f1f4',
+          text: '#f4f4f5',
+          lightText: '#09090b',
+          muted: '#a1a1aa',
+          lightMuted: '#52525b',
+          accent: '#3b82f6',
+          accentHover: '#2563eb',
         },
         background: {
           light: '#f8fafc',
@@ -71,18 +59,10 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Fira Code', 'Menlo', 'monospace']
+        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Fira Code', 'Menlo', 'Monaco', 'Courier New', 'monospace'],
       },
-      boxShadow: {
-        'subtle': '0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.02)',
-        'card': '0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.02)',
-        'card-hover': '0 12px 32px -4px rgba(15, 23, 42, 0.08), 0 4px 12px -2px rgba(15, 23, 42, 0.03)',
-        'glow': '0 0 35px -5px rgba(99, 102, 241, 0.18)',
-      }
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [],
 }
