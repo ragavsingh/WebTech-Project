@@ -47,27 +47,27 @@ export default function SyllabusModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm transition-all overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-black/60 backdrop-blur-sm transition-all overflow-y-auto">
       {/* Backdrop */}
       <div className="fixed inset-0 -z-10" onClick={onClose} />
 
-      <div className="w-full max-w-4xl my-8 rounded-xl border border-doc-border dark:border-doc-border border-doc-lightBorder bg-doc-surface dark:bg-doc-surface bg-doc-lightSurface shadow-2xl overflow-hidden transition-all flex flex-col max-h-[90vh]">
+      <div className="w-full max-w-4xl my-3 sm:my-8 rounded-2xl border border-doc-border dark:border-doc-border border-doc-lightBorder bg-doc-surface dark:bg-doc-surface bg-doc-lightSurface shadow-2xl overflow-hidden transition-all flex flex-col max-h-[92vh]">
         {/* Modal Header */}
-        <div className="p-4 sm:p-5 border-b border-doc-border dark:border-doc-border border-doc-lightBorder flex items-center justify-between bg-doc-bg/60 dark:bg-doc-bg/60 bg-doc-lightBg/60">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-doc-accent/15 text-doc-accent border border-doc-accent/30 flex items-center justify-center font-mono font-bold text-sm">
+        <div className="p-3.5 sm:p-5 border-b border-doc-border dark:border-doc-border border-doc-lightBorder flex items-center justify-between bg-doc-bg/60 dark:bg-doc-bg/60 bg-doc-lightBg/60">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-doc-accent/15 text-doc-accent border border-doc-accent/30 flex items-center justify-center font-mono font-bold text-xs sm:text-sm shrink-0">
               <BookOpen className="w-4 h-4" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <h3 className="text-base font-bold text-doc-text dark:text-doc-text text-doc-lightText tracking-tight">
-                  Web Technology — Syllabus & Curriculum Map
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                <h3 className="text-sm sm:text-base font-bold text-doc-text dark:text-doc-text text-doc-lightText tracking-tight truncate">
+                  Web Technology — Syllabus Map
                 </h3>
-                <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-emerald-500/15 text-emerald-500 border border-emerald-500/30">
+                <span className="px-1.5 py-0.2 sm:px-2 sm:py-0.5 rounded text-[9px] sm:text-[10px] font-mono font-bold uppercase bg-emerald-500/15 text-emerald-500 border border-emerald-500/30 shrink-0">
                   100% Covered
                 </span>
               </div>
-              <p className="text-xs text-doc-muted dark:text-doc-muted text-doc-lightMuted">
+              <p className="text-[11px] sm:text-xs text-doc-muted dark:text-doc-muted text-doc-lightMuted truncate hidden sm:block">
                 Official University Course Specification mapped to WebTech deep-dive engineering chapters
               </p>
             </div>
@@ -75,9 +75,9 @@ export default function SyllabusModal({ isOpen, onClose }) {
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg border border-doc-border dark:border-doc-border border-doc-lightBorder hover:bg-doc-border/30 text-doc-muted hover:text-doc-text transition-colors"
+            className="p-1.5 rounded-lg border border-doc-border dark:border-doc-border border-doc-lightBorder hover:bg-doc-border/30 text-doc-muted hover:text-doc-text transition-colors shrink-0 ml-2"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
         </div>
 

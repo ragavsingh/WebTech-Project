@@ -126,7 +126,7 @@ export default function DocTopicPage() {
   }
 
   return (
-    <div className="w-full min-h-screen py-8 px-4 sm:px-8 lg:px-12 xl:px-16 flex justify-center relative">
+    <div className="w-full min-h-screen py-5 sm:py-8 px-3.5 sm:px-8 lg:px-12 xl:px-16 flex justify-center relative">
       {/* Top Reading Progress Bar (Fixed at top of screen) */}
       <div
         className="fixed top-0 left-0 right-0 h-[2.5px] z-50 bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-400 pointer-events-none transition-all duration-75"
@@ -134,47 +134,48 @@ export default function DocTopicPage() {
       />
       <div className="w-full max-w-4xl min-w-0">
         {/* Top Action Bar: Clean, calm breadcrumbs without harsh divider lines or pill boxes */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pb-6 text-xs text-doc-muted dark:text-zinc-400">
-          <div className="flex items-center gap-2">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-4 sm:pb-6 text-xs text-doc-muted dark:text-zinc-400">
+          <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
             <button
               onClick={() => (prev ? navigate(`/topic/${prev.id}`) : navigate('/'))}
-              className="inline-flex items-center gap-1.5 py-1 text-doc-lightText dark:text-zinc-200 hover:text-doc-accent font-medium transition-colors"
+              className="inline-flex items-center gap-1 py-1 text-doc-lightText dark:text-zinc-200 hover:text-doc-accent font-medium transition-colors shrink-0"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back</span>
             </button>
-            <span className="text-zinc-300 dark:text-zinc-700">/</span>
-            <span className="font-mono text-zinc-500 dark:text-zinc-400">{domainTopic.title}</span>
-            <span className="text-zinc-300 dark:text-zinc-700">/</span>
+            <span className="text-zinc-300 dark:text-zinc-700 shrink-0">/</span>
+            <span className="hidden sm:inline font-mono text-zinc-500 dark:text-zinc-400 truncate max-w-[140px] md:max-w-xs">{domainTopic.title}</span>
+            <span className="hidden sm:inline text-zinc-300 dark:text-zinc-700 shrink-0">/</span>
             <span className="text-doc-lightText dark:text-zinc-200 font-medium truncate max-w-[200px] sm:max-w-md">
               {topic.title}
             </span>
           </div>
 
-          <div className="flex items-center gap-2.5 text-[11px] font-mono text-zinc-500 dark:text-zinc-400">
-            <span className="flex items-center gap-1">
-              <Clock className="w-3 h-3 text-zinc-400" />
-              {topic.readTime || '15 min read'}
-            </span>
-            <span>•</span>
-            <span className="text-doc-accent font-semibold uppercase tracking-wider">
-              {topic.difficulty || 'Fundamental'}
-            </span>
-            <span>•</span>
+          <div className="flex items-center justify-between sm:justify-end gap-2 text-[11px] font-mono text-zinc-500 dark:text-zinc-400 pt-1 sm:pt-0 border-t sm:border-0 border-zinc-200/50 dark:border-zinc-800/50">
+            <div className="flex items-center gap-2">
+              <span className="flex items-center gap-1">
+                <Clock className="w-3 h-3 text-zinc-400" />
+                {topic.readTime || '15 min read'}
+              </span>
+              <span>•</span>
+              <span className="text-doc-accent font-semibold uppercase tracking-wider">
+                {topic.difficulty || 'Fundamental'}
+              </span>
+            </div>
             <button
               onClick={handleShareTopic}
-              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md border border-zinc-200/80 dark:border-zinc-800/80 hover:border-doc-accent/60 bg-white dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-300 hover:text-doc-accent transition-colors"
+              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg border border-zinc-200/80 dark:border-zinc-800/80 hover:border-doc-accent/60 bg-white dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-300 hover:text-doc-accent transition-colors shrink-0"
               title="Copy live Vercel link"
             >
               {copiedShare ? (
                 <>
-                  <Check className="w-3 h-3 text-emerald-500" />
-                  <span className="text-emerald-500 font-semibold text-[10px]">Copied!</span>
+                  <Check className="w-3.5 h-3.5 text-emerald-500" />
+                  <span className="text-emerald-500 font-semibold text-[11px]">Copied!</span>
                 </>
               ) : (
                 <>
-                  <Share2 className="w-3 h-3 text-zinc-400" />
-                  <span className="text-[10px]">Share</span>
+                  <Share2 className="w-3.5 h-3.5 text-zinc-400" />
+                  <span className="text-[11px]">Share</span>
                 </>
               )}
             </button>
@@ -182,26 +183,26 @@ export default function DocTopicPage() {
         </div>
 
         {/* Topic Header: Clean and breathable typography, no harsh border lines */}
-        <header className="pt-4 pb-12">
-          <div className="flex items-center gap-2 mb-3">
+        <header className="pt-2 sm:pt-4 pb-8 sm:pb-12">
+          <div className="flex items-center gap-2 mb-2 sm:mb-3">
             <span className="text-xs font-mono font-bold tracking-wider uppercase text-doc-accent">
               Topic {topic.code}
             </span>
             <span className="text-zinc-400 dark:text-zinc-600 font-mono text-xs">•</span>
-            <span className="text-xs font-mono text-zinc-500 dark:text-zinc-400">
+            <span className="text-xs font-mono text-zinc-500 dark:text-zinc-400 truncate">
               {domainTopic.unitBadge} • {domainTopic.title}
             </span>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-[40px] font-black tracking-tight text-doc-lightText dark:text-white leading-[1.15] mb-4">
+          <h1 className="text-2xl sm:text-3xl lg:text-[40px] font-black tracking-tight text-doc-lightText dark:text-white leading-[1.2] mb-3 sm:mb-4 break-words">
             {topic.title}
           </h1>
-          <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+          <p className="text-sm sm:text-base lg:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
             {topic.subtitle}
           </p>
         </header>
 
         {/* 6 Subtopic Sections: Breathable whitespace instead of harsh line dividers */}
-        <article className="space-y-16 text-doc-lightText dark:text-doc-text">
+        <article className="space-y-10 sm:space-y-16 text-doc-lightText dark:text-doc-text">
           {/* ========================================================= */}
           {/* 1. OVERVIEW & CORE CONCEPT */}
           {/* ========================================================= */}
@@ -319,7 +320,7 @@ export default function DocTopicPage() {
               {topic.reallife?.heading || '3. Real-Life Industry Example & Context'}
             </h2>
 
-            <div className="rounded-2xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/60 dark:border-zinc-800/50 p-6 space-y-4">
+            <div className="rounded-2xl bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/60 dark:border-zinc-800/50 p-4 sm:p-6 space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-zinc-200/50 dark:border-zinc-800/50">
                 <div className="flex items-center gap-2">
                   <span className="px-2 py-0.5 rounded text-xs font-mono font-bold bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30">
@@ -485,11 +486,11 @@ export default function DocTopicPage() {
         </article>
 
         {/* Bottom Pagination: Previous and Next Topic Navigation with strict containment */}
-        <nav className="pt-16 pb-16 mt-16 border-t border-zinc-200/60 dark:border-zinc-800/60 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full min-w-0">
+        <nav className="pt-8 sm:pt-16 pb-12 sm:pb-16 mt-10 sm:mt-16 border-t border-zinc-200/60 dark:border-zinc-800/60 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full min-w-0">
           {prev ? (
             <Link
               to={`/topic/${prev.id}`}
-              className="group flex flex-col p-5 rounded-2xl border border-zinc-200/60 dark:border-zinc-800/60 hover:border-doc-accent/60 bg-zinc-50/50 dark:bg-zinc-900/30 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-all text-left min-w-0 overflow-hidden"
+              className="group flex flex-col p-4 sm:p-5 rounded-2xl border border-zinc-200/60 dark:border-zinc-800/60 hover:border-doc-accent/60 bg-zinc-50/50 dark:bg-zinc-900/30 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-all text-left min-w-0 overflow-hidden"
             >
               <span className="flex items-center gap-1.5 text-xs text-zinc-500 font-mono mb-1 group-hover:text-doc-accent transition-colors shrink-0">
                 <ArrowLeft className="w-3.5 h-3.5 shrink-0" />
@@ -506,7 +507,7 @@ export default function DocTopicPage() {
           {next && (
             <Link
               to={`/topic/${next.id}`}
-              className="group flex flex-col p-5 rounded-2xl border border-zinc-200/60 dark:border-zinc-800/60 hover:border-doc-accent/60 bg-zinc-50/50 dark:bg-zinc-900/30 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-all text-left sm:text-right sm:items-end min-w-0 overflow-hidden"
+              className="group flex flex-col p-4 sm:p-5 rounded-2xl border border-zinc-200/60 dark:border-zinc-800/60 hover:border-doc-accent/60 bg-zinc-50/50 dark:bg-zinc-900/30 hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-all text-left sm:text-right sm:items-end min-w-0 overflow-hidden"
             >
               <span className="flex items-center gap-1.5 text-xs text-zinc-500 font-mono mb-1 group-hover:text-doc-accent transition-colors shrink-0">
                 <span>Next Topic</span>

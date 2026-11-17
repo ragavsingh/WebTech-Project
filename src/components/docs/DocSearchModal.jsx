@@ -62,21 +62,21 @@ export default function DocSearchModal({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 md:pt-24 px-4 bg-black/60 backdrop-blur-sm transition-all">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-8 sm:pt-16 md:pt-24 px-3 sm:px-4 bg-black/60 backdrop-blur-sm transition-all">
       {/* Backdrop click */}
       <div className="fixed inset-0 -z-10" onClick={onClose} />
 
-      <div className="w-full max-w-2xl overflow-hidden rounded-xl border border-doc-border dark:border-doc-border border-doc-lightBorder bg-doc-surface dark:bg-doc-surface bg-doc-lightSurface shadow-2xl transition-all">
+      <div className="w-full max-w-2xl overflow-hidden rounded-2xl border border-doc-border dark:border-doc-border border-doc-lightBorder bg-doc-surface dark:bg-doc-surface bg-doc-lightSurface shadow-2xl transition-all">
         {/* Search Input Bar */}
-        <div className="flex items-center px-4 py-3.5 border-b border-doc-border dark:border-doc-border border-doc-lightBorder">
-          <Search className="w-5 h-5 text-doc-muted dark:text-doc-muted text-doc-lightMuted mr-3 shrink-0" />
+        <div className="flex items-center px-3.5 sm:px-4 py-3 sm:py-3.5 border-b border-doc-border dark:border-doc-border border-doc-lightBorder">
+          <Search className="w-4 h-4 sm:w-5 sm:h-5 text-doc-muted dark:text-doc-muted text-doc-lightMuted mr-2.5 sm:mr-3 shrink-0" />
           <input
             ref={inputRef}
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search all 49 topics, protocols, RFCs, and case studies..."
-            className="w-full bg-transparent text-sm md:text-base text-doc-text dark:text-doc-text text-doc-lightText placeholder:text-doc-muted dark:placeholder:text-doc-muted placeholder:text-doc-lightMuted focus:outline-none"
+            placeholder="Search 49 topics, RFCs, case studies..."
+            className="w-full bg-transparent text-sm sm:text-base text-doc-text dark:text-doc-text text-doc-lightText placeholder:text-doc-muted dark:placeholder:text-doc-muted placeholder:text-doc-lightMuted focus:outline-none"
           />
           {query ? (
             <button

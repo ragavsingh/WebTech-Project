@@ -115,11 +115,11 @@ export default function CodeBlock({ code, language = 'javascript' }) {
       </div>
 
       {/* Code Body with Line Numbers */}
-      <div className="p-4 sm:p-5 overflow-x-auto text-xs sm:text-[13px] font-mono leading-relaxed bg-zinc-950 select-text">
+      <div className="p-3 sm:p-5 overflow-x-auto text-[11.5px] sm:text-[13px] font-mono leading-relaxed bg-zinc-950 select-text touch-pan-x">
         <pre className="m-0 font-mono">
           {lines.map((line, i) => (
             <div key={i} className="table-row">
-              <span className="table-cell pr-4 text-right select-none text-zinc-600 font-mono text-[11px] w-8">
+              <span className="table-cell pr-2.5 sm:pr-4 text-right select-none text-zinc-600 font-mono text-[10px] sm:text-[11px] w-6 sm:w-8">
                 {i + 1}
               </span>
               <span className="table-cell whitespace-pre">

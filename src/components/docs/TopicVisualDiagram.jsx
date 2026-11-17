@@ -488,20 +488,25 @@ export default function TopicVisualDiagram({ topicId, title, company }) {
 
   return (
     <div className="my-6 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/50 overflow-hidden shadow-sm">
-      <div className="flex items-center justify-between px-4 py-2.5 border-b border-zinc-200/60 dark:border-zinc-800/60 bg-zinc-50/60 dark:bg-zinc-900/80 text-xs font-mono">
-        <span className="flex items-center gap-2 text-zinc-900 dark:text-zinc-100 font-semibold">
-          <Eye className="w-3.5 h-3.5 text-doc-accent" />
+      <div className="flex flex-wrap items-center justify-between gap-2 px-3 sm:px-4 py-2.5 border-b border-zinc-200/60 dark:border-zinc-800/60 bg-zinc-50/60 dark:bg-zinc-900/80 text-xs font-mono">
+        <span className="flex items-center gap-2 text-zinc-900 dark:text-zinc-100 font-semibold text-[11px] sm:text-xs">
+          <Eye className="w-3.5 h-3.5 text-doc-accent shrink-0" />
           <span>Real-Life System Architecture Blueprint</span>
         </span>
-        {company && (
-          <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-500/15 text-amber-600 dark:text-amber-400">
-            Case: {company}
-          </span>
-        )}
+        <div className="flex items-center gap-2">
+          <span className="sm:hidden text-[10px] text-zinc-400 font-mono">Swipe →</span>
+          {company && (
+            <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-500/15 text-amber-600 dark:text-amber-400 truncate max-w-[190px] sm:max-w-none">
+              Case: {company}
+            </span>
+          )}
+        </div>
       </div>
 
-      <div className="p-4 sm:p-5 flex justify-center items-center overflow-x-auto">
-        {diagramContent}
+      <div className="p-3 sm:p-5 flex justify-start sm:justify-center items-center overflow-x-auto touch-pan-x">
+        <div className="w-full min-w-[620px] sm:min-w-0">
+          {diagramContent}
+        </div>
       </div>
     </div>
   );
