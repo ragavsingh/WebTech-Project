@@ -247,6 +247,20 @@ export default function DocSidebar({ onOpenSearch, onOpenSyllabus, onCloseMobile
 
       {/* Sidebar Bottom Footer: Theme Toggle & Info */}
       <div className="p-3 space-y-2 border-t border-zinc-200/60 dark:border-zinc-800/60">
+        <a
+          href="https://web-tech-project-rgv.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full flex items-center justify-between px-3 py-1.5 rounded-xl text-xs font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors"
+          title="Open live Vercel deployment"
+        >
+          <span className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="font-mono text-[11px]">Live on Vercel</span>
+          </span>
+          <ExternalLink className="w-3.5 h-3.5 text-zinc-400" />
+        </a>
+
         <button
           onClick={toggleTheme}
           className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium bg-zinc-100 dark:bg-zinc-900 hover:bg-zinc-200/70 dark:hover:bg-zinc-800 transition-colors"

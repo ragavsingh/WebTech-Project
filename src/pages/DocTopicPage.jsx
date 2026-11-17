@@ -42,6 +42,7 @@ export default function DocTopicPage() {
   const { prev, next } = getAdjacentTopics(effectiveTopicId);
 
   const [copiedCode, setCopiedCode] = useState(false);
+  const [copiedShare, setCopiedShare] = useState(false);
   const [activeSectionId, setActiveSectionId] = useState('overview');
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -89,6 +90,15 @@ export default function DocTopicPage() {
     navigator.clipboard.writeText(codeText);
     setCopiedCode(true);
     setTimeout(() => setCopiedCode(false), 2000);
+  };
+
+  const handleShareTopic = () => {
+    const liveUrl = `https://web-tech-project-rgv.vercel.app/topic/${effectiveTopicId}`;
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(liveUrl);
+      setCopiedShare(true);
+      setTimeout(() => setCopiedShare(false), 2000);
+    }
   };
 
   const scrollToSubtopic = (id) => {
@@ -150,6 +160,24 @@ export default function DocTopicPage() {
             <span className="text-doc-accent font-semibold uppercase tracking-wider">
               {topic.difficulty || 'Fundamental'}
             </span>
+            <span>•</span>
+            <button
+              onClick={handleShareTopic}
+              className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md border border-zinc-200/80 dark:border-zinc-800/80 hover:border-doc-accent/60 bg-white dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-300 hover:text-doc-accent transition-colors"
+              title="Copy live Vercel link"
+            >
+              {copiedShare ? (
+                <>
+                  <Check className="w-3 h-3 text-emerald-500" />
+                  <span className="text-emerald-500 font-semibold text-[10px]">Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Share2 className="w-3 h-3 text-zinc-400" />
+                  <span className="text-[10px]">Share</span>
+                </>
+              )}
+            </button>
           </div>
         </div>
 
